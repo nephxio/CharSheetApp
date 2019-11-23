@@ -15,13 +15,17 @@ namespace CharSheetApp
         public SheetEditorForm()
         {
             InitializeComponent();
-            TabControl TabList = new TabControl();
-            TabPage MainSheetTab = new TabPage("Sheet");
             CenterToParent();
-            MainSheetTab.Dock = DockStyle.Fill;
-            TabList.TabPages.Add(MainSheetTab);
-            
+        }
 
+
+        public SheetEditorForm(Form Parent)
+        {
+            InitializeComponent();
+            CenterToParent();
+            MdiParent = Parent;
+            this.Height = (int)(MdiParent.Height * .75);
+            this.Width = (int)(MdiParent.Width * .75);
         }
     }
 }
