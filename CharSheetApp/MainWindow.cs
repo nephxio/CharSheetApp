@@ -16,15 +16,25 @@ namespace CharSheetApp
         public MainWindow()
         {
             InitializeComponent();
-            this.Width = (int)(Screen.PrimaryScreen.Bounds.Width * .75);
-            this.Height =(int)(Screen.PrimaryScreen.Bounds.Height * .75);
+            this.Width = Screen.PrimaryScreen.Bounds.Width > 1020 ? (int)(Screen.PrimaryScreen.Bounds.Width * .75) : 1020;
+            this.Height =Screen.PrimaryScreen.Bounds.Height > 768 ? (int)(Screen.PrimaryScreen.Bounds.Height * .75) : 768;
+            this.Text = "BNS System Character Sheet Builder";
             this.IsMdiContainer = true;
             this.CenterToScreen();
+
+            SheetEditorForm Sheet = new SheetEditorForm();
+            Sheet.MdiParent = this;
+            Sheet.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

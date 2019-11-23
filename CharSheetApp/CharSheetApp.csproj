@@ -67,6 +67,12 @@
   <ItemGroup>
     <Compile Include="CharSheetData.cs" />
     <Compile Include="Definitions.cs" />
+    <Compile Include="SheetEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SheetEditorForm.Designer.cs">
+      <DependentUpon>SheetEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticGameData.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SheetEditorForm.resx">
+      <DependentUpon>SheetEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

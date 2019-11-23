@@ -18,3 +18,4 @@ D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.exe
 D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.pdb
 D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.csprojAssemblyReference.cache
 D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.MainWindow.resources
+D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.SheetEditorForm.resources
