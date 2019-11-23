@@ -27,5 +27,10 @@ namespace CharSheetApp
             this.Height = (int)(MdiParent.Height * .75);
             this.Width = (int)(MdiParent.Width * .75);
         }
+
+        private void SheetEditorForm_ResizeEnd(object sender, EventArgs e)
+        {
+
+        }
     }
 }
