@@ -34,118 +34,45 @@ namespace CharSheetApp
     public class HeaderData
     {
         //Player data
-        private string playerName;
-        private string playerEmail;
-        private string membershipID;
-        private int creationMC;
-        private int currentMC;
-        private string directST;
-        private string directSTEmail;
-        private string directCoord;
-        private string directCoordEmail;
-        private string domainID;
-        private string regionID;
-        private string countryID;
+        public string playerName;
+        public string playerEmail;
+        public string membershipID;
+        public int creationMC;
+        public int currentMC;
+        public string directST;
+        public string directSTEmail;
+        public string directCoord;
+        public string directCoordEmail;
+        public string domainID;
+        public string regionID;
+        public string countryID;
 
         //Character data
-        private bool isNPC;
-        private System.DateTime creationDate;
-        private string charName;
-        private string charClan;
-        private string charGender;
-        private string charArchetype;
-        private string nativeLanguage;
-        private string moralityPath;
-        private int moralityLevel;
-        private System.DateTime embraceDate;
+        public bool isNPC;
+        public System.DateTime creationDate;
+        public string charName;
+        public string charClan;
+        public string charSect;
+        public string charGender;
+        public string charArchetype;
+        public string nativeLanguage;
+        public Morality moralityPathInfo;
+        public System.DateTime embraceDate;
 
         public HeaderData()
         {
 
         }
-
-        public string PlayerName
-        {
-            get { return playerName; }
-            set { playerName = value; }
-        }
-
-        public string PlayerEmail
-        {
-            get { return playerEmail; }
-            set { playerEmail = value; }
-        }
-
-        public string MembershipID
-        {
-            get { return membershipID; }
-            set { membershipID = value; }
-        }
-
-        public int CreationMC
-        {
-            get { return creationMC; }
-            set { creationMC = value; }
-        }
-
-        public int CurrentMC
-        {
-            get { return currentMC; }
-            set { currentMC = value; }
-        }
-
-        public string DirectST
-        {
-            get { return directST; }
-            set { directST = value; }
-        }
-        public string DirectSTEmail
-        {
-            get { return directSTEmail; }
-            set { directSTEmail = value; }
-        }
-
-        public string DirectCoord
-        {
-            get { return directCoord; }
-            set { directCoord = value; }
-        }
-
-        public string DirectCoordEmail
-        {
-            get { return directCoordEmail; }
-            set { directCoordEmail = value; }
-        }
-
-        public string DomainID
-        {
-            get { return domainID; }
-            set { domainID = value; }
-        }
-
-        public string RegionID
-        {
-            get { return regionID; }
-            set { regionID = value; }
-        }
-
-        public string CountryID
-        {
-            get { return countryID; }
-            set { countryID = value; }
-        }
-
-
     }
 
     [Serializable]
     public class AttributeData 
     {
-        private int attributeID;
-        private string attributeName;
-        private int focusID;
-        private string focusName;
-        private int level;
+        public int attributeID;
+        public string attributeName;
+        public int focusID;
+        public string focusName;
+        public int level;
 
         public AttributeData()
         {
@@ -164,43 +91,13 @@ namespace CharSheetApp
             focusName = FocName;
             level = Level;
         }
-
-        public int AttributeID
-        {
-            get { return attributeID; }
-            set { attributeID = value; }
-        }
-
-        public string AttributeName
-        {
-            get { return attributeName; }
-            set { attributeName = value; }
-        }
-
-        public int FocusID
-        {
-            get { return focusID; }
-            set { focusID = value; }
-        }
-
-        public string FocusName
-        {
-            get { return focusName; }
-            set { focusName = value; }
-        }
-
-        public int Level
-        {
-            get { return level; }
-            set { level = value; }
-        }
     }
 
     [Serializable]
     public class AbilityData : IDName
     {
-        protected int level;
-        protected List<string> specialization;
+        public int level;
+        public List<string> specialization;
 
         public AbilityData() : base()
         {
@@ -214,24 +111,12 @@ namespace CharSheetApp
             level = Level;
             specialization = Specialization;
         }
-
-        public int Level
-        {
-            get { return level; }
-            set { level = value; }
-        }
-
-        public List<string> Specialization
-        {
-            get { return specialization; }
-            set { specialization = Specialization; }
-        }
     }
 
     [Serializable]
     public class DisciplineData : Discipline
     {
-        protected int level;
+        public int level;
 
         public DisciplineData() : base()
         {
@@ -242,12 +127,16 @@ namespace CharSheetApp
         {
             level = Level;
         }
-
-        public int Level
-        {
-            get { return level; }
-            set { level = value; }
-        }
     }
 
+    [Serializable]
+    public class Morality : MoralityPath
+    {
+        public int level;
+
+        Morality() : base()
+        {
+            level = 0;
+        }
+    }
 }

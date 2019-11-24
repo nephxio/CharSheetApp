@@ -26,8 +26,12 @@ namespace CharSheetApp
         {
             InitializeComponent();
             sheet = new CharSheetData();
+            FillClanBox(clanDropBox);
+            FillPathBox(moralityDropDown);
+
             CenterToParent();
             MdiParent = Parent;
+
             this.Height = (int)(MdiParent.Height * .75);
             this.Width = (int)(MdiParent.Width * .75);
         }
@@ -43,57 +47,57 @@ namespace CharSheetApp
 
         private void PackPlayerInfo(ref CharSheetData InCharacter)
         {
-            InCharacter.headers.PlayerName = playerNameTextBox.Text;
-            InCharacter.headers.PlayerEmail = playerEmailTextBox.Text;
-            InCharacter.headers.MembershipID = membershipNumberTextBox.Text;
+            InCharacter.headers.playerName = playerNameTextBox.Text;
+            InCharacter.headers.playerEmail = playerEmailTextBox.Text;
+            InCharacter.headers.membershipID = membershipNumberTextBox.Text;
 
             if (mcAtCreationDropDown.Text == "N/A" || mcAtCreationDropDown.Text == "")
             {
-                InCharacter.headers.CreationMC = -1;
+                InCharacter.headers.creationMC = -1;
             }
             else
             {
-                InCharacter.headers.CreationMC = Convert.ToInt32(mcAtCreationDropDown.Text);
+                InCharacter.headers.creationMC = Convert.ToInt32(mcAtCreationDropDown.Text);
             }
 
             if (currentMCDropDown.Text == "N/A" || currentMCDropDown.Text == "")
             {
-                InCharacter.headers.CurrentMC = -1;
+                InCharacter.headers.currentMC = -1;
             }
             else
             {
-                InCharacter.headers.CurrentMC = Convert.ToInt32(currentMCDropDown.Text);
+                InCharacter.headers.currentMC = Convert.ToInt32(currentMCDropDown.Text);
             }
 
-            InCharacter.headers.DirectST = directSTTextBox.Text;
-            InCharacter.headers.DirectSTEmail = stEmailTextBox.Text;
-            InCharacter.headers.DirectCoord = directCoordTextBox.Text;
-            InCharacter.headers.DirectCoordEmail = coordEmailTextBox.Text;
-            InCharacter.headers.DomainID = domainIDTextBox.Text;
-            InCharacter.headers.RegionID = regionTextBox.Text;
-            InCharacter.headers.CountryID = countryTextBox.Text;
+            InCharacter.headers.directST = directSTTextBox.Text;
+            InCharacter.headers.directSTEmail = stEmailTextBox.Text;
+            InCharacter.headers.directCoord = directCoordTextBox.Text;
+            InCharacter.headers.directCoordEmail = coordEmailTextBox.Text;
+            InCharacter.headers.domainID = domainIDTextBox.Text;
+            InCharacter.headers.regionID = regionTextBox.Text;
+            InCharacter.headers.countryID = countryTextBox.Text;
         }
 
         private void FillPlayerInfo()
         {
-            playerNameTextBox.Text = sheet.headers.PlayerName;
-            playerEmailTextBox.Text = sheet.headers.PlayerEmail;
-            membershipNumberTextBox.Text = sheet.headers.MembershipID;
-            mcAtCreationDropDown.Text = sheet.headers.CreationMC.ToString();
+            playerNameTextBox.Text = sheet.headers.playerName;
+            playerEmailTextBox.Text = sheet.headers.playerEmail;
+            membershipNumberTextBox.Text = sheet.headers.membershipID;
+            mcAtCreationDropDown.Text = sheet.headers.creationMC.ToString();
 
             if (mcAtCreationDropDown.Text != "")
             {
                 mcAtCreationDropDown.Enabled = false;
             }
 
-            currentMCDropDown.Text = sheet.headers.CurrentMC.ToString();
-            directSTTextBox.Text = sheet.headers.DirectST;
-            stEmailTextBox.Text = sheet.headers.DirectSTEmail;
-            directCoordTextBox.Text = sheet.headers.DirectCoord;
-            coordEmailTextBox.Text = sheet.headers.DirectCoordEmail;
-            domainIDTextBox.Text = sheet.headers.DomainID;
-            regionTextBox.Text = sheet.headers.RegionID;
-            countryTextBox.Text = sheet.headers.CountryID;
+            currentMCDropDown.Text = sheet.headers.currentMC.ToString();
+            directSTTextBox.Text = sheet.headers.directST;
+            stEmailTextBox.Text = sheet.headers.directSTEmail;
+            directCoordTextBox.Text = sheet.headers.directCoord;
+            coordEmailTextBox.Text = sheet.headers.directCoordEmail;
+            domainIDTextBox.Text = sheet.headers.domainID;
+            regionTextBox.Text = sheet.headers.regionID;
+            countryTextBox.Text = sheet.headers.countryID;
         }
 
         private void playerInfoTab_Enter(object sender, EventArgs e)
@@ -115,6 +119,26 @@ namespace CharSheetApp
                 {
                     currentMCDropDown.Items.Add(i.ToString());
                 }
+            }
+        }
+
+        private void FillClanBox(ComboBox control)
+        {
+            List<Clan> clanList = StaticGameData.LoadClanData();
+
+            foreach(Clan c in clanList)
+            {
+                control.Items.Add(c.clanName);
+            }
+        }
+
+        private void FillPathBox(ComboBox control)
+        {
+            List<MoralityPath> pathList = StaticGameData.LoadMoralityData();
+
+            foreach (MoralityPath c in pathList)
+            {
+                control.Items.Add(c.pathName);
             }
         }
     }

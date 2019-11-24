@@ -7,12 +7,12 @@ namespace CharSheetApp
     [Serializable]
     public class Discipline
     {
-        protected int disciplineID;
-        protected string disciplineName;
-        protected int rarityLevel;
-        protected string primaryAttribute;
-        protected string primaryAbility;
-        protected List<string> abilityFoci;
+        public int disciplineID;
+        public string disciplineName;
+        public int rarityLevel;
+        public string primaryAttribute;
+        public string primaryAbility;
+        public List<string> abilityFoci;
 
         public Discipline()
         {
@@ -33,49 +33,13 @@ namespace CharSheetApp
             primaryAbility = Ability;
             abilityFoci = new List<string>(AbilityFoci);
         }
-
-        public int DisciplineID
-        {
-            get { return disciplineID; }
-            set { disciplineID = value; }
-        }
-
-        public string DisciplineName
-        {
-            get { return disciplineName; }
-            set { disciplineName = value; }
-        }
-
-        public int RarityLevel
-        {
-            get { return rarityLevel; }
-            set { rarityLevel = value; }
-        }
-
-        public string PrimaryAttribute
-        {
-            get { return primaryAttribute; }
-            set { primaryAttribute = value; }
-        }
-
-        public string PrimaryAbility
-        {
-            get { return primaryAbility; }
-            set { primaryAbility = value; }
-        }
-        
-        public List<string> AbilityFoci
-        {
-            get { return abilityFoci; }
-            set { abilityFoci = value; }
-        }
     }
 
     [Serializable]
     public class DiscID
     {
-        protected int disciplineID;
-        protected string disciplineName;
+        public int disciplineID;
+        public string disciplineName;
 
         public DiscID()
         {
@@ -92,10 +56,10 @@ namespace CharSheetApp
 
     public class Clan
     {
-        protected int clanID;
-        protected string clanName;
-        protected List<DiscID> inClanDisciplines;
-        protected string weaknessDesc;
+        public int clanID;
+        public string clanName;
+        public List<DiscID> inClanDisciplines;
+        public string weaknessDesc;
 
         public Clan()
         {
@@ -112,43 +76,19 @@ namespace CharSheetApp
             inClanDisciplines = InClanDisciplines;
             weaknessDesc = WeaknessDesc;
         }
-
-        public int ClanID
-        {
-            get { return clanID; }
-            set { clanID = value; }
-        }
-
-        public string ClanName
-        {
-            get { return clanName; }
-            set { clanName = value; }
-        }
-
-        public List<DiscID> InClanDisciplines
-        {
-            get { return inClanDisciplines; }
-            set { inClanDisciplines = value; }
-        }
-
-        public string WeaknessDesc
-        {
-            get { return weaknessDesc; }
-            set { weaknessDesc = value; }
-        }
     }
 
     [Serializable]
     public class Bloodline
     {
-        protected int bloodlineID;
-        protected string bloodlineName;
-        protected string parentClanName;
-        protected IDName meritID;
-        protected List<IDName> inClanDisciplines;
-        protected bool additionalPath;
-        protected string weaknessOneDesc;
-        protected string weaknessTwoDesc;
+        public int bloodlineID;
+        public string bloodlineName;
+        public string parentClanName;
+        public IDName meritID;
+        public List<IDName> inClanDisciplines;
+        public bool additionalPath;
+        public string weaknessOneDesc;
+        public string weaknessTwoDesc;
 
         public Bloodline()
         {
@@ -173,61 +113,13 @@ namespace CharSheetApp
             weaknessOneDesc = WeaknessOneDesc;
             weaknessTwoDesc = WeaknessTwoDesc;
         }
-
-        public int BloodlineID
-        {
-            get { return bloodlineID; }
-            set { bloodlineID = value; }
-        }
-
-        public string BloodlineName
-        {
-            get { return bloodlineName; }
-            set { bloodlineName = value; }
-        }
-
-        public string ParentClanName
-        {
-            get { return parentClanName; }
-            set { parentClanName = value; }
-        }
-
-        public IDName MeritID
-        {
-            get { return meritID; }
-            set { meritID = value; }
-        }
-
-        public List<IDName> InClanDisciplines
-        {
-            get { return inClanDisciplines; }
-            set { inClanDisciplines = value; }
-        }
-
-        public bool AdditionalPath
-        {
-            get { return additionalPath; }
-            set { additionalPath = value; }
-        }
-
-        public string WeaknessOneDesc
-        {
-            get { return weaknessOneDesc; }
-            set { weaknessOneDesc = value; }
-        }
-
-        public string WeaknessTwoDesc
-        {
-            get { return weaknessTwoDesc; }
-            set { weaknessTwoDesc = value; }
-        }
     }
 
     [Serializable]
     public class IDName
     {
-        protected int abilityID;
-        protected string abilityName;
+        public int abilityID;
+        public string abilityName;
 
         public IDName()
         {
@@ -240,27 +132,15 @@ namespace CharSheetApp
             abilityID = ID;
             abilityName = Name;
         }
-
-        public int AbilityID
-        {
-            get { return abilityID; }
-            set { abilityID = value; }
-        }
-
-        public string AbilityName
-        {
-            get { return abilityName; }
-            set { abilityName = value; }
-        }
     }
 
     [Serializable]
     public class Merit
     {
-        protected int meritID;
-        protected string meritName;
-        protected int clanMeritID;
-        protected int cost;
+        public int meritID;
+        public string meritName;
+        public int clanMeritID;
+        public int cost;
 
         public Merit()
         {
@@ -277,38 +157,14 @@ namespace CharSheetApp
             clanMeritID = Clan;
             cost = Cost;
         }
-
-        public int MeritID
-        {
-            get { return meritID; }
-            set { meritID = value; }
-        }
-
-        public string MeritName
-        {
-            get { return meritName; }
-            set { meritName = value; }
-        }
-
-        public int ClanMeritID
-        {
-            get { return clanMeritID; }
-            set { clanMeritID = value; }
-        }
-
-        public int Cost
-        {
-            get { return cost; }
-            set { cost = value; }
-        }
     }
 
     [Serializable]
     public class Flaw
     {
-        protected int flawID;
-        protected string flawName;
-        protected int cost;
+        public int flawID;
+        public string flawName;
+        public int cost;
 
         public Flaw()
         {
@@ -323,23 +179,30 @@ namespace CharSheetApp
             flawName = Name;
             cost = Cost;
         }
+    }
 
-        public int FlawID
+    [Serializable]
+    public class MoralityPath
+    {
+        public int pathID;
+        public string pathName;
+        public int baseCost;
+        public int sabbatCost;
+
+        public MoralityPath()
         {
-            get { return flawID; }
-            set { flawID = value; }
+            pathID = 0;
+            pathName = "";
+            baseCost = 0;
+            sabbatCost = 0;
         }
 
-        public string FlawName
+        public MoralityPath(int ID, string Name, int BaseCost, int SabbatCost)
         {
-            get { return flawName; }
-            set { flawName = value; }
-        }
-
-        public int Cost
-        {
-            get { return cost; }
-            set { cost = value; }
+            pathID = ID;
+            pathName = Name;
+            baseCost = BaseCost;
+            sabbatCost = SabbatCost;
         }
     }
 }

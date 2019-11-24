@@ -6,8 +6,6 @@ using System.Windows.Forms;
 
 namespace CharSheetApp
 {
-    public StaticGameData gameData = new StaticGameData();
-
     static class Program
     {
         /// <summary>

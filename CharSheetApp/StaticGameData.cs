@@ -186,6 +186,34 @@ namespace CharSheetApp
             return bloodlineData;
         }
 
+        public static List<MoralityPath> LoadMoralityData()
+        {
+            List<MoralityPath> data = new List<MoralityPath>();
+            SQLiteConnection conn = OpenDBConnection();
+
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM MoralityPaths";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                data.Add(new MoralityPath(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1), sqlite_datareader.GetInt32(2), sqlite_datareader.GetInt32(3)));
+            }
+
+            try
+            {
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.ToString());
+            }
+
+            return data;
+        }
+
         public static Dictionary<int,string> LoadIDNameData(string tableName)
         {
             Dictionary<int, string> IDNameDict = new Dictionary<int, string>();

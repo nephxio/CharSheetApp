@@ -57,11 +57,33 @@
             this.playerNameTextBox = new System.Windows.Forms.TextBox();
             this.playerNameLabel = new System.Windows.Forms.Label();
             this.characterInfoTab = new System.Windows.Forms.TabPage();
+            this.charInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.genderLabel = new System.Windows.Forms.Label();
+            this.nativeLanguageTextBox = new System.Windows.Forms.TextBox();
+            this.nativeLanguageLabel = new System.Windows.Forms.Label();
+            this.archetypeTextBox = new System.Windows.Forms.TextBox();
+            this.archetypeLabel = new System.Windows.Forms.Label();
+            this.creationDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.creationDateLabel = new System.Windows.Forms.Label();
+            this.sectDropBox = new System.Windows.Forms.ComboBox();
+            this.sectLabel = new System.Windows.Forms.Label();
+            this.isNPCCheckBox = new System.Windows.Forms.CheckBox();
+            this.clanDropBox = new System.Windows.Forms.ComboBox();
+            this.clanLabel = new System.Windows.Forms.Label();
+            this.characterNameTextBox = new System.Windows.Forms.TextBox();
+            this.characterNameLabel = new System.Windows.Forms.Label();
             this.statsTab = new System.Windows.Forms.TabPage();
+            this.moralityLabel = new System.Windows.Forms.Label();
+            this.moralityDropDown = new System.Windows.Forms.ComboBox();
+            this.moralityLevelLabel = new System.Windows.Forms.Label();
+            this.moralityLevelDropDown = new System.Windows.Forms.ComboBox();
             this.sheetTabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupPanel.SuspendLayout();
             this.playerInfoGroupBox.SuspendLayout();
+            this.characterInfoTab.SuspendLayout();
+            this.charInfoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // sheetTabControl
@@ -372,6 +394,7 @@
             // 
             // characterInfoTab
             // 
+            this.characterInfoTab.Controls.Add(this.charInfoGroupBox);
             this.characterInfoTab.Location = new System.Drawing.Point(4, 22);
             this.characterInfoTab.Name = "characterInfoTab";
             this.characterInfoTab.Padding = new System.Windows.Forms.Padding(3);
@@ -379,6 +402,183 @@
             this.characterInfoTab.TabIndex = 1;
             this.characterInfoTab.Text = "Character Info";
             this.characterInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // charInfoGroupBox
+            // 
+            this.charInfoGroupBox.Controls.Add(this.moralityLevelDropDown);
+            this.charInfoGroupBox.Controls.Add(this.moralityLevelLabel);
+            this.charInfoGroupBox.Controls.Add(this.moralityDropDown);
+            this.charInfoGroupBox.Controls.Add(this.moralityLabel);
+            this.charInfoGroupBox.Controls.Add(this.genderTextBox);
+            this.charInfoGroupBox.Controls.Add(this.genderLabel);
+            this.charInfoGroupBox.Controls.Add(this.nativeLanguageTextBox);
+            this.charInfoGroupBox.Controls.Add(this.nativeLanguageLabel);
+            this.charInfoGroupBox.Controls.Add(this.archetypeTextBox);
+            this.charInfoGroupBox.Controls.Add(this.archetypeLabel);
+            this.charInfoGroupBox.Controls.Add(this.creationDateTimePicker);
+            this.charInfoGroupBox.Controls.Add(this.creationDateLabel);
+            this.charInfoGroupBox.Controls.Add(this.sectDropBox);
+            this.charInfoGroupBox.Controls.Add(this.sectLabel);
+            this.charInfoGroupBox.Controls.Add(this.isNPCCheckBox);
+            this.charInfoGroupBox.Controls.Add(this.clanDropBox);
+            this.charInfoGroupBox.Controls.Add(this.clanLabel);
+            this.charInfoGroupBox.Controls.Add(this.characterNameTextBox);
+            this.charInfoGroupBox.Controls.Add(this.characterNameLabel);
+            this.charInfoGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.charInfoGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.charInfoGroupBox.Name = "charInfoGroupBox";
+            this.charInfoGroupBox.Size = new System.Drawing.Size(987, 637);
+            this.charInfoGroupBox.TabIndex = 0;
+            this.charInfoGroupBox.TabStop = false;
+            this.charInfoGroupBox.Text = "Character Info";
+            // 
+            // genderTextBox
+            // 
+            this.genderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderTextBox.Location = new System.Drawing.Point(699, 144);
+            this.genderTextBox.Name = "genderTextBox";
+            this.genderTextBox.Size = new System.Drawing.Size(144, 26);
+            this.genderTextBox.TabIndex = 16;
+            // 
+            // genderLabel
+            // 
+            this.genderLabel.AutoSize = true;
+            this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderLabel.Location = new System.Drawing.Point(633, 147);
+            this.genderLabel.Name = "genderLabel";
+            this.genderLabel.Size = new System.Drawing.Size(69, 20);
+            this.genderLabel.TabIndex = 15;
+            this.genderLabel.Text = "Gender";
+            // 
+            // nativeLanguageTextBox
+            // 
+            this.nativeLanguageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nativeLanguageTextBox.Location = new System.Drawing.Point(469, 144);
+            this.nativeLanguageTextBox.Name = "nativeLanguageTextBox";
+            this.nativeLanguageTextBox.Size = new System.Drawing.Size(144, 26);
+            this.nativeLanguageTextBox.TabIndex = 14;
+            // 
+            // nativeLanguageLabel
+            // 
+            this.nativeLanguageLabel.AutoSize = true;
+            this.nativeLanguageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nativeLanguageLabel.Location = new System.Drawing.Point(324, 147);
+            this.nativeLanguageLabel.Name = "nativeLanguageLabel";
+            this.nativeLanguageLabel.Size = new System.Drawing.Size(144, 20);
+            this.nativeLanguageLabel.TabIndex = 13;
+            this.nativeLanguageLabel.Text = "Native Language";
+            // 
+            // archetypeTextBox
+            // 
+            this.archetypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archetypeTextBox.Location = new System.Drawing.Point(153, 141);
+            this.archetypeTextBox.Name = "archetypeTextBox";
+            this.archetypeTextBox.Size = new System.Drawing.Size(144, 26);
+            this.archetypeTextBox.TabIndex = 12;
+            // 
+            // archetypeLabel
+            // 
+            this.archetypeLabel.AutoSize = true;
+            this.archetypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archetypeLabel.Location = new System.Drawing.Point(8, 144);
+            this.archetypeLabel.Name = "archetypeLabel";
+            this.archetypeLabel.Size = new System.Drawing.Size(90, 20);
+            this.archetypeLabel.TabIndex = 11;
+            this.archetypeLabel.Text = "Archetype";
+            // 
+            // creationDateTimePicker
+            // 
+            this.creationDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creationDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.creationDateTimePicker.Location = new System.Drawing.Point(153, 46);
+            this.creationDateTimePicker.Name = "creationDateTimePicker";
+            this.creationDateTimePicker.Size = new System.Drawing.Size(144, 26);
+            this.creationDateTimePicker.TabIndex = 10;
+            // 
+            // creationDateLabel
+            // 
+            this.creationDateLabel.AutoSize = true;
+            this.creationDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creationDateLabel.Location = new System.Drawing.Point(8, 51);
+            this.creationDateLabel.Name = "creationDateLabel";
+            this.creationDateLabel.Size = new System.Drawing.Size(121, 20);
+            this.creationDateLabel.TabIndex = 9;
+            this.creationDateLabel.Text = "Creation Date";
+            // 
+            // sectDropBox
+            // 
+            this.sectDropBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sectDropBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sectDropBox.FormattingEnabled = true;
+            this.sectDropBox.Items.AddRange(new object[] {
+            "Anarch",
+            "Camarilla",
+            "Independent Alliance",
+            "Sabbat",
+            "Unaligned"});
+            this.sectDropBox.Location = new System.Drawing.Point(643, 94);
+            this.sectDropBox.Name = "sectDropBox";
+            this.sectDropBox.Size = new System.Drawing.Size(200, 28);
+            this.sectDropBox.TabIndex = 8;
+            // 
+            // sectLabel
+            // 
+            this.sectLabel.AutoSize = true;
+            this.sectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sectLabel.Location = new System.Drawing.Point(592, 97);
+            this.sectLabel.Name = "sectLabel";
+            this.sectLabel.Size = new System.Drawing.Size(46, 20);
+            this.sectLabel.TabIndex = 7;
+            this.sectLabel.Text = "Sect";
+            // 
+            // isNPCCheckBox
+            // 
+            this.isNPCCheckBox.AutoSize = true;
+            this.isNPCCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isNPCCheckBox.Location = new System.Drawing.Point(869, 98);
+            this.isNPCCheckBox.Name = "isNPCCheckBox";
+            this.isNPCCheckBox.Size = new System.Drawing.Size(83, 24);
+            this.isNPCCheckBox.TabIndex = 6;
+            this.isNPCCheckBox.Text = "Is NPC";
+            this.isNPCCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // clanDropBox
+            // 
+            this.clanDropBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.clanDropBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clanDropBox.FormattingEnabled = true;
+            this.clanDropBox.Location = new System.Drawing.Point(375, 94);
+            this.clanDropBox.Name = "clanDropBox";
+            this.clanDropBox.Size = new System.Drawing.Size(200, 28);
+            this.clanDropBox.TabIndex = 5;
+            // 
+            // clanLabel
+            // 
+            this.clanLabel.AutoSize = true;
+            this.clanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clanLabel.Location = new System.Drawing.Point(324, 97);
+            this.clanLabel.Name = "clanLabel";
+            this.clanLabel.Size = new System.Drawing.Size(45, 20);
+            this.clanLabel.TabIndex = 4;
+            this.clanLabel.Text = "Clan";
+            // 
+            // characterNameTextBox
+            // 
+            this.characterNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterNameTextBox.Location = new System.Drawing.Point(153, 94);
+            this.characterNameTextBox.Name = "characterNameTextBox";
+            this.characterNameTextBox.Size = new System.Drawing.Size(144, 26);
+            this.characterNameTextBox.TabIndex = 3;
+            // 
+            // characterNameLabel
+            // 
+            this.characterNameLabel.AutoSize = true;
+            this.characterNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.characterNameLabel.Location = new System.Drawing.Point(8, 97);
+            this.characterNameLabel.Name = "characterNameLabel";
+            this.characterNameLabel.Size = new System.Drawing.Size(139, 20);
+            this.characterNameLabel.TabIndex = 2;
+            this.characterNameLabel.Text = "Character Name";
             // 
             // statsTab
             // 
@@ -388,6 +588,53 @@
             this.statsTab.TabIndex = 2;
             this.statsTab.Text = "Attributes/Abilities/Backgrounds";
             this.statsTab.UseVisualStyleBackColor = true;
+            // 
+            // moralityLabel
+            // 
+            this.moralityLabel.AutoSize = true;
+            this.moralityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLabel.Location = new System.Drawing.Point(8, 187);
+            this.moralityLabel.Name = "moralityLabel";
+            this.moralityLabel.Size = new System.Drawing.Size(134, 20);
+            this.moralityLabel.TabIndex = 17;
+            this.moralityLabel.Text = "Path of Morality";
+            // 
+            // moralityDropDown
+            // 
+            this.moralityDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moralityDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityDropDown.FormattingEnabled = true;
+            this.moralityDropDown.Location = new System.Drawing.Point(153, 184);
+            this.moralityDropDown.Name = "moralityDropDown";
+            this.moralityDropDown.Size = new System.Drawing.Size(235, 28);
+            this.moralityDropDown.TabIndex = 18;
+            // 
+            // moralityLevelLabel
+            // 
+            this.moralityLevelLabel.AutoSize = true;
+            this.moralityLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLevelLabel.Location = new System.Drawing.Point(412, 187);
+            this.moralityLevelLabel.Name = "moralityLevelLabel";
+            this.moralityLevelLabel.Size = new System.Drawing.Size(51, 20);
+            this.moralityLevelLabel.TabIndex = 19;
+            this.moralityLevelLabel.Text = "Level";
+            // 
+            // moralityLevelDropDown
+            // 
+            this.moralityLevelDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moralityLevelDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLevelDropDown.FormattingEnabled = true;
+            this.moralityLevelDropDown.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.moralityLevelDropDown.Location = new System.Drawing.Point(469, 182);
+            this.moralityLevelDropDown.Name = "moralityLevelDropDown";
+            this.moralityLevelDropDown.Size = new System.Drawing.Size(50, 28);
+            this.moralityLevelDropDown.TabIndex = 20;
             // 
             // SheetEditorForm
             // 
@@ -403,6 +650,9 @@
             this.groupPanel.ResumeLayout(false);
             this.playerInfoGroupBox.ResumeLayout(false);
             this.playerInfoGroupBox.PerformLayout();
+            this.characterInfoTab.ResumeLayout(false);
+            this.charInfoGroupBox.ResumeLayout(false);
+            this.charInfoGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,8 +662,11 @@
         private System.Windows.Forms.TabControl sheetTabControl;
         private System.Windows.Forms.TabPage playerInfoTab;
         private System.Windows.Forms.TabPage characterInfoTab;
+        private System.Windows.Forms.TabPage statsTab;
         private System.Windows.Forms.Panel groupPanel;
         private System.Windows.Forms.GroupBox playerInfoGroupBox;
+        private System.Windows.Forms.ComboBox currentMCDropDown;
+        private System.Windows.Forms.ComboBox mcAtCreationDropDown;
         private System.Windows.Forms.TextBox countryTextBox;
         private System.Windows.Forms.Label countryLabel;
         private System.Windows.Forms.TextBox regionTextBox;
@@ -436,8 +689,25 @@
         private System.Windows.Forms.Label playerEmailLabel;
         private System.Windows.Forms.TextBox playerNameTextBox;
         private System.Windows.Forms.Label playerNameLabel;
-        private System.Windows.Forms.ComboBox mcAtCreationDropDown;
-        private System.Windows.Forms.ComboBox currentMCDropDown;
-        private System.Windows.Forms.TabPage statsTab;
+        private System.Windows.Forms.GroupBox charInfoGroupBox;
+        private System.Windows.Forms.ComboBox clanDropBox;
+        private System.Windows.Forms.Label clanLabel;
+        private System.Windows.Forms.TextBox characterNameTextBox;
+        private System.Windows.Forms.Label characterNameLabel;
+        private System.Windows.Forms.ComboBox sectDropBox;
+        private System.Windows.Forms.Label sectLabel;
+        private System.Windows.Forms.CheckBox isNPCCheckBox;
+        private System.Windows.Forms.TextBox genderTextBox;
+        private System.Windows.Forms.Label genderLabel;
+        private System.Windows.Forms.TextBox nativeLanguageTextBox;
+        private System.Windows.Forms.Label nativeLanguageLabel;
+        private System.Windows.Forms.TextBox archetypeTextBox;
+        private System.Windows.Forms.Label archetypeLabel;
+        private System.Windows.Forms.DateTimePicker creationDateTimePicker;
+        private System.Windows.Forms.Label creationDateLabel;
+        private System.Windows.Forms.ComboBox moralityDropDown;
+        private System.Windows.Forms.Label moralityLabel;
+        private System.Windows.Forms.ComboBox moralityLevelDropDown;
+        private System.Windows.Forms.Label moralityLevelLabel;
     }
 }
