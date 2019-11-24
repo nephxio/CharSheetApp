@@ -9,37 +9,33 @@ namespace CharSheetApp
     [Serializable]
     public class CharSheetData
     {
+
+        public HeaderData headers;
+        public List<AttributeData> attributes;
+        public List<AbilityData> abilities;
+        public List<AbilityData> backgrounds;
+        public List<DisciplineData> disciplines;
+        public List<Merit> merits;
+        public List<Flaw> flaws;
+
         public CharSheetData()
         {
             headers = new HeaderData();
-            attributes = new List<AttributeData>() { new AttributeData(1, "Physical", 0, ""), new AttributeData(2, "Social", 0, ""), new AttributeData(3, "Mental", 0, "") };
+            attributes = new List<AttributeData>() { new AttributeData(1, "Physical", 0, "", 0), new AttributeData(2, "Social", 0, "", 0), new AttributeData(3, "Mental", 0, "", 0) };
             abilities = new List<AbilityData>();
             backgrounds = new List<AbilityData>();
             disciplines = new List<DisciplineData>();
             merits = new List<Merit>();
             flaws = new List<Flaw>();
         }
-
-        private HeaderData              headers;
-        private List<AttributeData>     attributes;
-        private List<AbilityData>       abilities;
-        private List<AbilityData>       backgrounds;
-        private List<DisciplineData>    disciplines;
-        private List<Merit>             merits;
-        private List<Flaw>              flaws;
     }
 
     [Serializable]
     public class HeaderData
     {
-        public HeaderData()
-        {
-
-        }
-
         //Player data
         private string playerName;
-        private string email;
+        private string playerEmail;
         private string membershipID;
         private int creationMC;
         private int currentMC;
@@ -49,6 +45,7 @@ namespace CharSheetApp
         private string directCoordEmail;
         private string domainID;
         private string regionID;
+        private string countryID;
 
         //Character data
         private bool isNPC;
@@ -62,6 +59,81 @@ namespace CharSheetApp
         private int moralityLevel;
         private System.DateTime embraceDate;
 
+        public HeaderData()
+        {
+
+        }
+
+        public string PlayerName
+        {
+            get { return playerName; }
+            set { playerName = value; }
+        }
+
+        public string PlayerEmail
+        {
+            get { return playerEmail; }
+            set { playerEmail = value; }
+        }
+
+        public string MembershipID
+        {
+            get { return membershipID; }
+            set { membershipID = value; }
+        }
+
+        public int CreationMC
+        {
+            get { return creationMC; }
+            set { creationMC = value; }
+        }
+
+        public int CurrentMC
+        {
+            get { return currentMC; }
+            set { currentMC = value; }
+        }
+
+        public string DirectST
+        {
+            get { return directST; }
+            set { directST = value; }
+        }
+        public string DirectSTEmail
+        {
+            get { return directSTEmail; }
+            set { directSTEmail = value; }
+        }
+
+        public string DirectCoord
+        {
+            get { return directCoord; }
+            set { directCoord = value; }
+        }
+
+        public string DirectCoordEmail
+        {
+            get { return directCoordEmail; }
+            set { directCoordEmail = value; }
+        }
+
+        public string DomainID
+        {
+            get { return domainID; }
+            set { domainID = value; }
+        }
+
+        public string RegionID
+        {
+            get { return regionID; }
+            set { regionID = value; }
+        }
+
+        public string CountryID
+        {
+            get { return countryID; }
+            set { countryID = value; }
+        }
 
 
     }
@@ -69,20 +141,28 @@ namespace CharSheetApp
     [Serializable]
     public class AttributeData 
     {
+        private int attributeID;
+        private string attributeName;
+        private int focusID;
+        private string focusName;
+        private int level;
+
         public AttributeData()
         {
             attributeID = 0;
             attributeName = "";
             focusID = 0;
             focusName = "";
+            level = 0;
         }
 
-        public AttributeData(int AtID, string AtName, int FocID, string FocName)
+        public AttributeData(int AtID, string AtName, int FocID, string FocName, int Level)
         {
             attributeID = AtID;
             attributeName = AtName;
             focusID = FocID;
             focusName = FocName;
+            level = Level;
         }
 
         public int AttributeID
@@ -109,15 +189,19 @@ namespace CharSheetApp
             set { focusName = value; }
         }
 
-        private int attributeID;
-        private string attributeName;
-        private int focusID;
-        private string focusName;
+        public int Level
+        {
+            get { return level; }
+            set { level = value; }
+        }
     }
 
     [Serializable]
     public class AbilityData : IDName
     {
+        protected int level;
+        protected List<string> specialization;
+
         public AbilityData() : base()
         {
             
@@ -142,15 +226,13 @@ namespace CharSheetApp
             get { return specialization; }
             set { specialization = Specialization; }
         }
-
-        protected int level;
-        protected List<string> specialization;
-
     }
 
     [Serializable]
     public class DisciplineData : Discipline
     {
+        protected int level;
+
         public DisciplineData() : base()
         {
             level = 0;
@@ -166,8 +248,6 @@ namespace CharSheetApp
             get { return level; }
             set { level = value; }
         }
-
-        protected int level;
     }
 
 }

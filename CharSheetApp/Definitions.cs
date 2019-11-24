@@ -4,8 +4,16 @@ using System.Text;
 
 namespace CharSheetApp
 {
+    [Serializable]
     public class Discipline
     {
+        protected int disciplineID;
+        protected string disciplineName;
+        protected int rarityLevel;
+        protected string primaryAttribute;
+        protected string primaryAbility;
+        protected List<string> abilityFoci;
+
         public Discipline()
         {
             disciplineID = 0;
@@ -61,19 +69,14 @@ namespace CharSheetApp
             get { return abilityFoci; }
             set { abilityFoci = value; }
         }
-
-
-        protected int             disciplineID;
-        protected string          disciplineName;
-        protected int             rarityLevel;
-        protected string          primaryAttribute;
-        protected string          primaryAbility;
-        protected List<string>    abilityFoci;
-
     }
 
+    [Serializable]
     public class DiscID
     {
+        protected int disciplineID;
+        protected string disciplineName;
+
         public DiscID()
         {
             disciplineID = 0;
@@ -85,13 +88,15 @@ namespace CharSheetApp
             disciplineID = ID;
             disciplineName = Name;
         }
-
-        protected int     disciplineID;
-        protected string  disciplineName;
     }
 
     public class Clan
     {
+        protected int clanID;
+        protected string clanName;
+        protected List<DiscID> inClanDisciplines;
+        protected string weaknessDesc;
+
         public Clan()
         {
             clanID = 0;
@@ -131,15 +136,20 @@ namespace CharSheetApp
             get { return weaknessDesc; }
             set { weaknessDesc = value; }
         }
-
-        protected int             clanID;
-        protected string          clanName;
-        protected List<DiscID>    inClanDisciplines;
-        protected string          weaknessDesc;
     }
 
+    [Serializable]
     public class Bloodline
     {
+        protected int bloodlineID;
+        protected string bloodlineName;
+        protected string parentClanName;
+        protected IDName meritID;
+        protected List<IDName> inClanDisciplines;
+        protected bool additionalPath;
+        protected string weaknessOneDesc;
+        protected string weaknessTwoDesc;
+
         public Bloodline()
         {
             bloodlineID = 0;
@@ -211,19 +221,14 @@ namespace CharSheetApp
             get { return weaknessTwoDesc; }
             set { weaknessTwoDesc = value; }
         }
-
-        protected int             bloodlineID;
-        protected string          bloodlineName;
-        protected string          parentClanName;
-        protected IDName          meritID;
-        protected List<IDName>    inClanDisciplines;
-        protected bool            additionalPath;
-        protected string          weaknessOneDesc;
-        protected string          weaknessTwoDesc;
     }
 
+    [Serializable]
     public class IDName
     {
+        protected int abilityID;
+        protected string abilityName;
+
         public IDName()
         {
             abilityID = 0;
@@ -247,14 +252,16 @@ namespace CharSheetApp
             get { return abilityName; }
             set { abilityName = value; }
         }
-
-        protected int     abilityID;
-        protected string  abilityName;
     }
 
     [Serializable]
     public class Merit
     {
+        protected int meritID;
+        protected string meritName;
+        protected int clanMeritID;
+        protected int cost;
+
         public Merit()
         {
             meritID = 0;
@@ -294,16 +301,15 @@ namespace CharSheetApp
             get { return cost; }
             set { cost = value; }
         }
-
-        protected int meritID;
-        protected string meritName;
-        protected int clanMeritID;
-        protected int cost;
     }
 
     [Serializable]
     public class Flaw
     {
+        protected int flawID;
+        protected string flawName;
+        protected int cost;
+
         public Flaw()
         {
             flawID = 0;
@@ -335,9 +341,5 @@ namespace CharSheetApp
             get { return cost; }
             set { cost = value; }
         }
-
-        protected int flawID;
-        protected string flawName;
-        protected int cost;
     }
 }

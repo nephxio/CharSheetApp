@@ -32,6 +32,8 @@
             this.playerInfoTab = new System.Windows.Forms.TabPage();
             this.groupPanel = new System.Windows.Forms.Panel();
             this.playerInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.currentMCDropDown = new System.Windows.Forms.ComboBox();
+            this.mcAtCreationDropDown = new System.Windows.Forms.ComboBox();
             this.countryTextBox = new System.Windows.Forms.TextBox();
             this.countryLabel = new System.Windows.Forms.Label();
             this.regionTextBox = new System.Windows.Forms.TextBox();
@@ -55,8 +57,7 @@
             this.playerNameTextBox = new System.Windows.Forms.TextBox();
             this.playerNameLabel = new System.Windows.Forms.Label();
             this.characterInfoTab = new System.Windows.Forms.TabPage();
-            this.mcAtCreationDropDown = new System.Windows.Forms.ComboBox();
-            this.currentMCDropDown = new System.Windows.Forms.ComboBox();
+            this.statsTab = new System.Windows.Forms.TabPage();
             this.sheetTabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupPanel.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             this.sheetTabControl.Controls.Add(this.playerInfoTab);
             this.sheetTabControl.Controls.Add(this.characterInfoTab);
+            this.sheetTabControl.Controls.Add(this.statsTab);
             this.sheetTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sheetTabControl.Location = new System.Drawing.Point(0, 0);
             this.sheetTabControl.Name = "sheetTabControl";
@@ -84,6 +86,7 @@
             this.playerInfoTab.TabIndex = 0;
             this.playerInfoTab.Text = "Player Info";
             this.playerInfoTab.UseVisualStyleBackColor = true;
+            this.playerInfoTab.Enter += new System.EventHandler(this.playerInfoTab_Enter);
             // 
             // groupPanel
             // 
@@ -122,12 +125,50 @@
             this.playerInfoGroupBox.Controls.Add(this.playerNameTextBox);
             this.playerInfoGroupBox.Controls.Add(this.playerNameLabel);
             this.playerInfoGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerInfoGroupBox.Location = new System.Drawing.Point(5, 3);
+            this.playerInfoGroupBox.Location = new System.Drawing.Point(3, 204);
             this.playerInfoGroupBox.Name = "playerInfoGroupBox";
             this.playerInfoGroupBox.Size = new System.Drawing.Size(982, 326);
             this.playerInfoGroupBox.TabIndex = 0;
             this.playerInfoGroupBox.TabStop = false;
             this.playerInfoGroupBox.Text = "Player Info";
+            // 
+            // currentMCDropDown
+            // 
+            this.currentMCDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.currentMCDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentMCDropDown.FormattingEnabled = true;
+            this.currentMCDropDown.Location = new System.Drawing.Point(637, 83);
+            this.currentMCDropDown.Name = "currentMCDropDown";
+            this.currentMCDropDown.Size = new System.Drawing.Size(144, 28);
+            this.currentMCDropDown.TabIndex = 24;
+            // 
+            // mcAtCreationDropDown
+            // 
+            this.mcAtCreationDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mcAtCreationDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mcAtCreationDropDown.FormattingEnabled = true;
+            this.mcAtCreationDropDown.Items.AddRange(new object[] {
+            "N/A",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.mcAtCreationDropDown.Location = new System.Drawing.Point(263, 81);
+            this.mcAtCreationDropDown.Name = "mcAtCreationDropDown";
+            this.mcAtCreationDropDown.Size = new System.Drawing.Size(144, 28);
+            this.mcAtCreationDropDown.TabIndex = 1;
+            this.mcAtCreationDropDown.SelectedIndexChanged += new System.EventHandler(this.mcAtCreationDropDown_SelectedIndexChanged);
             // 
             // countryTextBox
             // 
@@ -339,57 +380,14 @@
             this.characterInfoTab.Text = "Character Info";
             this.characterInfoTab.UseVisualStyleBackColor = true;
             // 
-            // mcAtCreationDropDown
+            // statsTab
             // 
-            this.mcAtCreationDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mcAtCreationDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mcAtCreationDropDown.FormattingEnabled = true;
-            this.mcAtCreationDropDown.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
-            this.mcAtCreationDropDown.Location = new System.Drawing.Point(263, 81);
-            this.mcAtCreationDropDown.Name = "mcAtCreationDropDown";
-            this.mcAtCreationDropDown.Size = new System.Drawing.Size(144, 28);
-            this.mcAtCreationDropDown.TabIndex = 1;
-            // 
-            // currentMCDropDown
-            // 
-            this.currentMCDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.currentMCDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentMCDropDown.FormattingEnabled = true;
-            this.currentMCDropDown.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
-            this.currentMCDropDown.Location = new System.Drawing.Point(637, 83);
-            this.currentMCDropDown.Name = "currentMCDropDown";
-            this.currentMCDropDown.Size = new System.Drawing.Size(144, 28);
-            this.currentMCDropDown.TabIndex = 24;
+            this.statsTab.Location = new System.Drawing.Point(4, 22);
+            this.statsTab.Name = "statsTab";
+            this.statsTab.Size = new System.Drawing.Size(996, 756);
+            this.statsTab.TabIndex = 2;
+            this.statsTab.Text = "Attributes/Abilities/Backgrounds";
+            this.statsTab.UseVisualStyleBackColor = true;
             // 
             // SheetEditorForm
             // 
@@ -400,7 +398,6 @@
             this.MaximumSize = new System.Drawing.Size(1020, 10000);
             this.Name = "SheetEditorForm";
             this.Text = "Form1";
-            this.ResizeEnd += new System.EventHandler(this.SheetEditorForm_ResizeEnd);
             this.sheetTabControl.ResumeLayout(false);
             this.playerInfoTab.ResumeLayout(false);
             this.groupPanel.ResumeLayout(false);
@@ -441,5 +438,6 @@
         private System.Windows.Forms.Label playerNameLabel;
         private System.Windows.Forms.ComboBox mcAtCreationDropDown;
         private System.Windows.Forms.ComboBox currentMCDropDown;
+        private System.Windows.Forms.TabPage statsTab;
     }
 }
