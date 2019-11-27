@@ -78,6 +78,8 @@
             this.moralityDropDown = new System.Windows.Forms.ComboBox();
             this.moralityLevelLabel = new System.Windows.Forms.Label();
             this.moralityLevelDropDown = new System.Windows.Forms.ComboBox();
+            this.embraceDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.embraceDateLabel = new System.Windows.Forms.Label();
             this.sheetTabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupPanel.SuspendLayout();
@@ -97,6 +99,7 @@
             this.sheetTabControl.SelectedIndex = 0;
             this.sheetTabControl.Size = new System.Drawing.Size(1004, 782);
             this.sheetTabControl.TabIndex = 0;
+            this.sheetTabControl.Enter += new System.EventHandler(this.sheetTabControl_Enter);
             // 
             // playerInfoTab
             // 
@@ -405,6 +408,8 @@
             // 
             // charInfoGroupBox
             // 
+            this.charInfoGroupBox.Controls.Add(this.embraceDateTimePicker);
+            this.charInfoGroupBox.Controls.Add(this.embraceDateLabel);
             this.charInfoGroupBox.Controls.Add(this.moralityLevelDropDown);
             this.charInfoGroupBox.Controls.Add(this.moralityLevelLabel);
             this.charInfoGroupBox.Controls.Add(this.moralityDropDown);
@@ -425,9 +430,9 @@
             this.charInfoGroupBox.Controls.Add(this.characterNameTextBox);
             this.charInfoGroupBox.Controls.Add(this.characterNameLabel);
             this.charInfoGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.charInfoGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.charInfoGroupBox.Location = new System.Drawing.Point(8, 195);
             this.charInfoGroupBox.Name = "charInfoGroupBox";
-            this.charInfoGroupBox.Size = new System.Drawing.Size(987, 637);
+            this.charInfoGroupBox.Size = new System.Drawing.Size(982, 341);
             this.charInfoGroupBox.TabIndex = 0;
             this.charInfoGroupBox.TabStop = false;
             this.charInfoGroupBox.Text = "Character Info";
@@ -636,6 +641,25 @@
             this.moralityLevelDropDown.Size = new System.Drawing.Size(50, 28);
             this.moralityLevelDropDown.TabIndex = 20;
             // 
+            // embraceDateTimePicker
+            // 
+            this.embraceDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.embraceDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.embraceDateTimePicker.Location = new System.Drawing.Point(153, 228);
+            this.embraceDateTimePicker.Name = "embraceDateTimePicker";
+            this.embraceDateTimePicker.Size = new System.Drawing.Size(144, 26);
+            this.embraceDateTimePicker.TabIndex = 22;
+            // 
+            // embraceDateLabel
+            // 
+            this.embraceDateLabel.AutoSize = true;
+            this.embraceDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.embraceDateLabel.Location = new System.Drawing.Point(8, 233);
+            this.embraceDateLabel.Name = "embraceDateLabel";
+            this.embraceDateLabel.Size = new System.Drawing.Size(124, 20);
+            this.embraceDateLabel.TabIndex = 21;
+            this.embraceDateLabel.Text = "Embrace Date";
+            // 
             // SheetEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,5 +733,7 @@
         private System.Windows.Forms.Label moralityLabel;
         private System.Windows.Forms.ComboBox moralityLevelDropDown;
         private System.Windows.Forms.Label moralityLevelLabel;
+        private System.Windows.Forms.DateTimePicker embraceDateTimePicker;
+        private System.Windows.Forms.Label embraceDateLabel;
     }
 }

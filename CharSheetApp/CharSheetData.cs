@@ -61,7 +61,7 @@ namespace CharSheetApp
 
         public HeaderData()
         {
-
+            moralityPathInfo = new Morality();
         }
     }
 
@@ -134,7 +134,7 @@ namespace CharSheetApp
     {
         public int level;
 
-        Morality() : base()
+        public Morality() : base()
         {
             level = 0;
         }

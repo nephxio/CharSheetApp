@@ -41,6 +41,7 @@ namespace CharSheetApp
             CharSheetData charData = new CharSheetData();
 
             PackPlayerInfo(ref charData);
+            PackCharacterInfo(ref charData);
 
             return charData;
         }
@@ -100,6 +101,69 @@ namespace CharSheetApp
             countryTextBox.Text = sheet.headers.countryID;
         }
 
+        private void PackCharacterInfo(ref CharSheetData InCharacter)
+        {
+            InCharacter.headers.isNPC = isNPCCheckBox.Checked;
+            InCharacter.headers.creationDate = creationDateTimePicker.Value;
+            InCharacter.headers.charName = characterNameTextBox.Text;
+            InCharacter.headers.charClan = clanDropBox.Text;
+            InCharacter.headers.charSect = sectDropBox.Text;
+            InCharacter.headers.charGender = genderTextBox.Text;
+            InCharacter.headers.charArchetype = archetypeTextBox.Text;
+            InCharacter.headers.nativeLanguage = nativeLanguageTextBox.Text;
+            List<MoralityPath> pathInfo = StaticGameData.LoadMoralityData();
+            foreach (MoralityPath path in pathInfo)
+            {
+                if(path.pathName == moralityDropDown.Text)
+                {
+                    InCharacter.headers.moralityPathInfo.pathID = path.pathID;
+                    InCharacter.headers.moralityPathInfo.pathName = path.pathName;
+                    InCharacter.headers.moralityPathInfo.baseCost = path.baseCost;
+                    InCharacter.headers.moralityPathInfo.sabbatCost = path.sabbatCost;
+                    InCharacter.headers.moralityPathInfo.level = Convert.ToInt32(moralityLevelDropDown.Text);
+                    break;
+                }
+            }
+
+            InCharacter.headers.embraceDate = embraceDateTimePicker.Value;
+        }
+
+        private void FillCharacterInfo()
+        {
+            isNPCCheckBox.Checked = sheet.headers.isNPC;
+            creationDateTimePicker.Value = sheet.headers.creationDate;
+            creationDateTimePicker.Enabled = false;
+            characterNameTextBox.Text = sheet.headers.charName;
+            clanDropBox.Text = sheet.headers.charClan;
+            sectDropBox.Text = sheet.headers.charSect;
+            genderTextBox.Text = sheet.headers.charGender;
+            archetypeTextBox.Text = sheet.headers.charArchetype;
+            nativeLanguageTextBox.Text = sheet.headers.nativeLanguage;
+            moralityDropDown.Text = sheet.headers.moralityPathInfo.pathName;
+            moralityLevelDropDown.Text = sheet.headers.moralityPathInfo.level.ToString();
+            embraceDateTimePicker.Value = sheet.headers.embraceDate;
+        }
+
+        private void FillClanBox(ComboBox control)
+        {
+            List<Clan> clanList = StaticGameData.LoadClanData();
+
+            foreach (Clan c in clanList)
+            {
+                control.Items.Add(c.clanName);
+            }
+        }
+
+        private void FillPathBox(ComboBox control)
+        {
+            List<MoralityPath> pathList = StaticGameData.LoadMoralityData();
+
+            foreach (MoralityPath c in pathList)
+            {
+                control.Items.Add(c.pathName);
+            }
+        }
+
         private void playerInfoTab_Enter(object sender, EventArgs e)
         {
             FillPlayerInfo();
@@ -122,24 +186,9 @@ namespace CharSheetApp
             }
         }
 
-        private void FillClanBox(ComboBox control)
+        private void sheetTabControl_Enter(object sender, EventArgs e)
         {
-            List<Clan> clanList = StaticGameData.LoadClanData();
-
-            foreach(Clan c in clanList)
-            {
-                control.Items.Add(c.clanName);
-            }
-        }
-
-        private void FillPathBox(ComboBox control)
-        {
-            List<MoralityPath> pathList = StaticGameData.LoadMoralityData();
-
-            foreach (MoralityPath c in pathList)
-            {
-                control.Items.Add(c.pathName);
-            }
+            FillCharacterInfo();
         }
     }
 }
