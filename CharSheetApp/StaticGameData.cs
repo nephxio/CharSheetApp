@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SQLite;
+using MySql.Data.MySqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -45,9 +47,9 @@ namespace CharSheetApp
             return characterSheet;
         }
 
-        private static SQLiteConnection OpenDBConnection()
+        private static MySqlConnection OpenDBConnection()
         {
-            SQLiteConnection conn = new SQLiteConnection(@"DataSource=..\Resources\data.db");
+            MySqlConnection conn = new MySqlConnection(@"Server=192.168.1.191; Port=3306; Database=org_info; Uid=philbert; Pwd=jipKxw6pD4");
 
             try
             {
@@ -66,10 +68,10 @@ namespace CharSheetApp
         {
             List<Discipline> disciplineList = new List<Discipline>();
 
-            SQLiteConnection conn = OpenDBConnection();
+            MySqlConnection conn = OpenDBConnection();
 
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT IFNULL(D.DisciplineID, 0), IFNULL(D.DisciplineName, ''), IFNULL(D.RarityLevel, 0), IFNULL(At.AttributeName, '') AS 'Primary Attribute', IFNULL(Ab.AbilityName, '') AS 'Primary Ability', IFNULL(F1.FocusName, '') AS 'Level 1 Focus', " +
                 "IFNULL(F2.FocusName, '') AS 'Level 2 Focus', IFNULL(F3.FocusName, '') AS 'Level 3 Focus', IFNULL(F4.FocusName, '') AS 'Level 4 Focus', IFNULL(F5.FocusName, '') AS 'Level 5 Focus' " +
@@ -85,7 +87,7 @@ namespace CharSheetApp
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                disciplineList.Add(new Discipline(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1), sqlite_datareader.GetInt32(2), sqlite_datareader.GetString(3), sqlite_datareader.GetString(4), 
+                disciplineList.Add(new Discipline(new DiscID(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1)), sqlite_datareader.GetInt32(2), sqlite_datareader.GetString(3), sqlite_datareader.GetString(4), 
                     new List<string>() { sqlite_datareader.GetString(5), sqlite_datareader.GetString(6), sqlite_datareader.GetString(7), sqlite_datareader.GetString(8), sqlite_datareader.GetString(9) }));
             }
 
@@ -105,24 +107,18 @@ namespace CharSheetApp
         public static List<Clan> LoadClanData()
         {
             List<Clan> clanData = new List<Clan>();
-            SQLiteConnection conn = OpenDBConnection();
+            MySqlConnection conn = OpenDBConnection();
 
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT IFNULL(C.ClanID, 0), IFNULL(C.ClanName, ''), IFNULL(D1.DisciplineID,0), IFNULL(D1.DisciplineName, '') AS 'First In-Clan', IFNULL(D2.DisciplineID,0), " +
-                                     "IFNULL(D2.DisciplineName, '') AS 'Second In-Clan', IFNULL(D3.DisciplineID, 0), IFNULL(D3.DisciplineName, '') AS 'Third In-Clan', IFNULL(W.WeaknessDesc, '') AS 'Weakness' " +
-                                     "FROM Clans AS C " +
-                                     "LEFT JOIN Disciplines AS D1 ON C.FirstInClanID = D1.DisciplineID " +
-                                     "LEFT JOIN Disciplines AS D2 ON C.SecondInClanID = D2.DisciplineID " +
-                                     "LEFT JOIN Disciplines AS D3 ON C.ThirdInClanID = D3.DisciplineID " +
-                                     "LEFT JOIN ClanWeaknesses AS W ON C.WeaknessID = W.WeaknessID";
+            sqlite_cmd.CommandText = "SELECT * FROM Clan_Data_With_IDs";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while(sqlite_datareader.Read())
             {
-                clanData.Add(new Clan(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1), new List<DiscID>() { new DiscID(sqlite_datareader.GetInt32(2), sqlite_datareader.GetString(3)), new DiscID(sqlite_datareader.GetInt32(4), sqlite_datareader.GetString(5)),
-                    new DiscID(sqlite_datareader.GetInt32(6), sqlite_datareader.GetString(7)) }, sqlite_datareader.GetString(8)));
+                clanData.Add(new Clan(new IDName(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1)), new List<DiscID>() { new DiscID(sqlite_datareader.GetInt32(2), sqlite_datareader.GetString(3)), new DiscID(sqlite_datareader.GetInt32(4), sqlite_datareader.GetString(5)),
+                    new DiscID(sqlite_datareader.GetInt32(6), sqlite_datareader.GetString(7)) }, new IDName(sqlite_datareader.GetInt32(8), sqlite_datareader.GetString(9))));
             }
 
             try
@@ -140,33 +136,22 @@ namespace CharSheetApp
         public static List<Bloodline> LoadBloodlineData()
         {
             List<Bloodline> bloodlineData = new List<Bloodline>();
-            SQLiteConnection conn = OpenDBConnection();
+            MySqlConnection conn = OpenDBConnection();
 
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT IFNULL(C.BloodlineID, 0) AS 'Clan ID', IFNULL(C.BloodlineName, '') AS 'Clan Name', IFNULL(C1.ClanName, '') AS 'Parent Clan',  IFNULL(C.MeritID, 0), IFNULL(M.MeritName, '')," +
-                                     "IFNULL(D1.DisciplineID, 0), IFNULL(D1.DisciplineName, '') AS 'First In-Clan', " +
-                                     "IFNULL(D2.DisciplineID, 0), IFNULL(D2.DisciplineName, '') AS 'Second In-Clan', " +
-                                     "IFNULL(D3.DisciplineID, 0), IFNULL(D3.DisciplineName, '') AS 'Third In-Clan', IFNULL(C.AdditionalPath, False) AS 'Additional Path', " +
-                                     "IFNULL(W.WeaknessDesc,''), IFNULL(W2.WeaknessDesc,'') " +
-                                     "FROM Bloodlines AS C " +
-                                     "LEFT JOIN Clans AS C1 ON c.ParentClanID = C1.ClanID " +
-                                     "LEFT JOIN Merits AS M ON C.MeritID = M.MeritID " +
-                                     "LEFT JOIN ClanWeaknesses AS W ON C.WeaknessOneID = W.WeaknessID " +
-                                     "LEFT JOIN ClanWeaknesses AS W2 ON C.WeaknessTwoID = W2.WeaknessID " +
-                                     "LEFT JOIN Disciplines AS D1 ON C.FirstInClanID = D1.DisciplineID " +
-                                     "LEFT JOIN Disciplines AS D2 ON C.SecondInClanID = D2.DisciplineID " +
-                                     "LEFT JOIN Disciplines AS D3 ON C.ThirdInClanID = D3.DisciplineID";
+            sqlite_cmd.CommandText = "SELECT * FROM Bloodline_Data_With_IDs";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
                 try
                 {
-                    bloodlineData.Add(new Bloodline(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1), sqlite_datareader.GetString(2), new IDName(sqlite_datareader.GetInt32(3), sqlite_datareader.GetString(4)), new List<IDName>()
-                                { new IDName(sqlite_datareader.GetInt32(5), sqlite_datareader.GetString(6)), new IDName(sqlite_datareader.GetInt32(7), sqlite_datareader.GetString(8)), new IDName(sqlite_datareader.GetInt32(9), sqlite_datareader.GetString(10))},
-                                sqlite_datareader.GetString(11) == "True", sqlite_datareader.GetString(12), sqlite_datareader.GetString(13)));
+                    bloodlineData.Add(new Bloodline(new IDName(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1)), new IDName(sqlite_datareader.GetInt32(2), sqlite_datareader.GetString(3)), new IDName(sqlite_datareader.GetInt32(4), sqlite_datareader.GetString(5)), new List<IDName>()
+                                { new IDName(sqlite_datareader.GetInt32(6), sqlite_datareader.GetString(7)), new IDName(sqlite_datareader.GetInt32(8), sqlite_datareader.GetString(9)), new IDName(sqlite_datareader.GetInt32(10), sqlite_datareader.GetString(11))},
+                                sqlite_datareader.GetInt32(12), new IDName(sqlite_datareader.GetInt32(13), sqlite_datareader.GetString(14)), 
+                                new IDName(sqlite_datareader.GetInt32(15), sqlite_datareader.GetString(16))));
                 }
                 catch (Exception exception)
                 {
@@ -189,17 +174,45 @@ namespace CharSheetApp
         public static List<MoralityPath> LoadMoralityData()
         {
             List<MoralityPath> data = new List<MoralityPath>();
-            SQLiteConnection conn = OpenDBConnection();
+            MySqlConnection conn = OpenDBConnection();
 
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT * FROM MoralityPaths";
+            sqlite_cmd.CommandText = "SELECT * FROM static_data_path_of_enlightenment";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                data.Add(new MoralityPath(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1), sqlite_datareader.GetInt32(2), sqlite_datareader.GetInt32(3)));
+                data.Add(new MoralityPath(new IDName(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1)), sqlite_datareader.GetInt32(2), sqlite_datareader.GetInt32(3)));
+            }
+
+            try
+            {
+                conn.Close();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.ToString());
+            }
+
+            return data;
+        }
+
+        public static List<ApprovalItems> LoadApprovalItemsData()
+        {
+            List<ApprovalItems> data = new List<ApprovalItems>();
+            MySqlConnection conn = OpenDBConnection();
+
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM Approval_Items";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                data.Add(new ApprovalItems(new IDName(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1)), new IDName(sqlite_datareader.GetInt32(0), sqlite_datareader.GetString(1))));
             }
 
             try
@@ -217,10 +230,10 @@ namespace CharSheetApp
         public static Dictionary<int,string> LoadIDNameData(string tableName)
         {
             Dictionary<int, string> IDNameDict = new Dictionary<int, string>();
-            SQLiteConnection conn = OpenDBConnection();
+            MySqlConnection conn = OpenDBConnection();
 
-            SQLiteDataReader sqlite_datareader;
-            SQLiteCommand sqlite_cmd;
+            MySqlDataReader sqlite_datareader;
+            MySqlCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT * FROM " + tableName;
 

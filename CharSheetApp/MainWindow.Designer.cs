@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.characterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.applicationForToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,10 +66,27 @@
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.characterToolStripMenuItem,
+            this.applicationForToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            this.newToolStripMenuItem.DropDownClosed += new System.EventHandler(this.newToolStripMenuItem_DropDownClosed);
+            this.newToolStripMenuItem.DropDownOpened += new System.EventHandler(this.newToolStripMenuItem_DropDownOpened);
+            // 
+            // characterToolStripMenuItem
+            // 
+            this.characterToolStripMenuItem.Name = "characterToolStripMenuItem";
+            this.characterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.characterToolStripMenuItem.Text = "Character";
+            this.characterToolStripMenuItem.Click += new System.EventHandler(this.characterToolStripMenuItem_Click);
+            // 
+            // applicationForToolStripMenuItem
+            // 
+            this.applicationForToolStripMenuItem.Name = "applicationForToolStripMenuItem";
+            this.applicationForToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.applicationForToolStripMenuItem.Text = "Application for...";
             // 
             // openToolStripMenuItem
             // 
@@ -128,6 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem characterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem applicationForToolStripMenuItem;
     }
 }
 

@@ -26,8 +26,11 @@ namespace CharSheetApp
         {
             InitializeComponent();
             sheet = new CharSheetData();
+            StaticGameData.LoadBloodlineData();
             FillClanBox(clanDropBox);
             FillPathBox(moralityDropDown);
+
+            this.Text = "New Character";
 
             CenterToParent();
             MdiParent = Parent;
@@ -108,16 +111,16 @@ namespace CharSheetApp
             InCharacter.headers.charName = characterNameTextBox.Text;
             InCharacter.headers.charClan = clanDropBox.Text;
             InCharacter.headers.charSect = sectDropBox.Text;
-            InCharacter.headers.charGender = genderTextBox.Text;
+            InCharacter.headers.charPronouns = genderTextBox.Text;
             InCharacter.headers.charArchetype = archetypeTextBox.Text;
             InCharacter.headers.nativeLanguage = nativeLanguageTextBox.Text;
             List<MoralityPath> pathInfo = StaticGameData.LoadMoralityData();
             foreach (MoralityPath path in pathInfo)
             {
-                if(path.pathName == moralityDropDown.Text)
+                if(path.moralityInfo.fieldName == moralityDropDown.Text)
                 {
-                    InCharacter.headers.moralityPathInfo.pathID = path.pathID;
-                    InCharacter.headers.moralityPathInfo.pathName = path.pathName;
+                    InCharacter.headers.moralityPathInfo.moralityInfo.fieldID = path.moralityInfo.fieldID;
+                    InCharacter.headers.moralityPathInfo.moralityInfo.fieldName = path.moralityInfo.fieldName;
                     InCharacter.headers.moralityPathInfo.baseCost = path.baseCost;
                     InCharacter.headers.moralityPathInfo.sabbatCost = path.sabbatCost;
                     InCharacter.headers.moralityPathInfo.level = Convert.ToInt32(moralityLevelDropDown.Text);
@@ -125,7 +128,7 @@ namespace CharSheetApp
                 }
             }
 
-            InCharacter.headers.embraceDate = embraceDateTimePicker.Value;
+            InCharacter.headers.embraceDate = embraceDateTimePicker.Text;
         }
 
         private void FillCharacterInfo()
@@ -136,12 +139,12 @@ namespace CharSheetApp
             characterNameTextBox.Text = sheet.headers.charName;
             clanDropBox.Text = sheet.headers.charClan;
             sectDropBox.Text = sheet.headers.charSect;
-            genderTextBox.Text = sheet.headers.charGender;
+            genderTextBox.Text = sheet.headers.charPronouns;
             archetypeTextBox.Text = sheet.headers.charArchetype;
             nativeLanguageTextBox.Text = sheet.headers.nativeLanguage;
-            moralityDropDown.Text = sheet.headers.moralityPathInfo.pathName;
+            moralityDropDown.Text = sheet.headers.moralityPathInfo.moralityInfo.fieldName;
             moralityLevelDropDown.Text = sheet.headers.moralityPathInfo.level.ToString();
-            embraceDateTimePicker.Value = sheet.headers.embraceDate;
+            embraceDateTimePicker.Text = sheet.headers.embraceDate;
         }
 
         private void FillClanBox(ComboBox control)
@@ -150,7 +153,10 @@ namespace CharSheetApp
 
             foreach (Clan c in clanList)
             {
-                control.Items.Add(c.clanName);
+                if (c.clanInfo.fieldName != "None")
+                {
+                    control.Items.Add(c.clanInfo.fieldName);
+                }
             }
         }
 
@@ -160,7 +166,10 @@ namespace CharSheetApp
 
             foreach (MoralityPath c in pathList)
             {
-                control.Items.Add(c.pathName);
+                if (c.moralityInfo.fieldName != "None")
+                {
+                    control.Items.Add(c.moralityInfo.fieldName);
+                }
             }
         }
 
@@ -186,9 +195,21 @@ namespace CharSheetApp
             }
         }
 
-        private void sheetTabControl_Enter(object sender, EventArgs e)
+        private void embraceDateTimePicker_ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData)
         {
-            FillCharacterInfo();
+            //TODO: Put in Validation for date in text box
+        }
+
+        private void characterNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.Text = characterNameTextBox.Text;
+            sheet.headers.charName = characterNameTextBox.Text;
+        }
+
+        private void clanDropBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Text += " - " + clanDropBox.Text;
+            sheet.headers.charClan = clanDropBox.Text;
         }
     }
 }

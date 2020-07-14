@@ -16,6 +16,7 @@ namespace CharSheetApp
     {
         private List<SheetEditorForm> sheets;
         private List<CharSheetData> chars;
+        private List<ApplicationForm> appForms;
 
         public MainWindow()
         {
@@ -27,17 +28,13 @@ namespace CharSheetApp
             this.CenterToScreen();
 
             sheets = new List<SheetEditorForm>();
+            chars = new List<CharSheetData>();
+            appForms = new List<ApplicationForm>();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sheets.Add(new SheetEditorForm(this));
-            sheets[sheets.Count - 1].Show();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,12 +47,12 @@ namespace CharSheetApp
                 sfd.InitialDirectory = Path.Combine(Application.StartupPath, @"..\Sheets\");
                 DialogResult result = sfd.ShowDialog();
 
-                if(result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     SheetEditorForm sef = new SheetEditorForm();
                     sef = (SheetEditorForm)ActiveMdiChild;
-                    StaticGameData.SerializeCharacterSheet(sfd.FileName,sef.PackCharacterDataForSave());
-                }                
+                    StaticGameData.SerializeCharacterSheet(sfd.FileName, sef.PackCharacterDataForSave());
+                }
             }
             else
             {
@@ -71,12 +68,46 @@ namespace CharSheetApp
             ofd.InitialDirectory = Path.Combine(Application.StartupPath, @"..\Sheets\");
             DialogResult result = ofd.ShowDialog();
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 sheets.Add(new SheetEditorForm(this));
                 sheets[sheets.Count - 1].sheet = StaticGameData.DeserializeCharacterSheet(ofd.FileName);
                 sheets[sheets.Count - 1].Show();
             }
+        }
+
+        private void characterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sheets.Add(new SheetEditorForm(this));
+            sheets[sheets.Count - 1].Show();
+        }
+
+        private void newToolStripMenuItem_DropDownOpened(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Length > 0)
+            {
+                foreach(Form child in this.MdiChildren)
+                {
+                    SheetEditorForm sheetData = child as SheetEditorForm;
+                    if (sheetData != null)
+                    {
+                        ToolStripMenuItem characterSheetItem = new ToolStripMenuItem(sheetData.Text, null, CreateNewApplication);
+                        applicationForToolStripMenuItem.DropDownItems.Add(characterSheetItem);
+                        chars.Add(sheetData.sheet);
+                    }
+                }
+            }
+        }
+
+        private void CreateNewApplication(object sender, System.EventArgs e)
+        {
+            appForms.Add(new ApplicationForm(this, chars[0]));            
+            appForms[appForms.Count - 1].Show();
+        }
+
+        private void newToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
+        {
+            applicationForToolStripMenuItem.DropDownItems.Clear();
         }
     }
 }

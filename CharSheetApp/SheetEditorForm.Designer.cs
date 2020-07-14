@@ -58,6 +58,12 @@
             this.playerNameLabel = new System.Windows.Forms.Label();
             this.characterInfoTab = new System.Windows.Forms.TabPage();
             this.charInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.embraceDateTimePicker = new System.Windows.Forms.TextBox();
+            this.embraceDateLabel = new System.Windows.Forms.Label();
+            this.moralityLevelDropDown = new System.Windows.Forms.ComboBox();
+            this.moralityLevelLabel = new System.Windows.Forms.Label();
+            this.moralityDropDown = new System.Windows.Forms.ComboBox();
+            this.moralityLabel = new System.Windows.Forms.Label();
             this.genderTextBox = new System.Windows.Forms.TextBox();
             this.genderLabel = new System.Windows.Forms.Label();
             this.nativeLanguageTextBox = new System.Windows.Forms.TextBox();
@@ -74,18 +80,20 @@
             this.characterNameTextBox = new System.Windows.Forms.TextBox();
             this.characterNameLabel = new System.Windows.Forms.Label();
             this.statsTab = new System.Windows.Forms.TabPage();
-            this.moralityLabel = new System.Windows.Forms.Label();
-            this.moralityDropDown = new System.Windows.Forms.ComboBox();
-            this.moralityLevelLabel = new System.Windows.Forms.Label();
-            this.moralityLevelDropDown = new System.Windows.Forms.ComboBox();
-            this.embraceDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.embraceDateLabel = new System.Windows.Forms.Label();
+            this.attributeGroupBox = new System.Windows.Forms.GroupBox();
+            this.attributePhysicalFocus3ComboBox = new System.Windows.Forms.ComboBox();
+            this.attributePhysicalFocus2ComboBox = new System.Windows.Forms.ComboBox();
+            this.attributePhysicalFocus1ComboBox = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.attributePhysicalLabel = new System.Windows.Forms.Label();
             this.sheetTabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupPanel.SuspendLayout();
             this.playerInfoGroupBox.SuspendLayout();
             this.characterInfoTab.SuspendLayout();
             this.charInfoGroupBox.SuspendLayout();
+            this.statsTab.SuspendLayout();
+            this.attributeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // sheetTabControl
@@ -99,7 +107,6 @@
             this.sheetTabControl.SelectedIndex = 0;
             this.sheetTabControl.Size = new System.Drawing.Size(1004, 782);
             this.sheetTabControl.TabIndex = 0;
-            this.sheetTabControl.Enter += new System.EventHandler(this.sheetTabControl_Enter);
             // 
             // playerInfoTab
             // 
@@ -437,6 +444,71 @@
             this.charInfoGroupBox.TabStop = false;
             this.charInfoGroupBox.Text = "Character Info";
             // 
+            // embraceDateTimePicker
+            // 
+            this.embraceDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.embraceDateTimePicker.Location = new System.Drawing.Point(153, 233);
+            this.embraceDateTimePicker.Name = "embraceDateTimePicker";
+            this.embraceDateTimePicker.Size = new System.Drawing.Size(144, 26);
+            this.embraceDateTimePicker.TabIndex = 22;
+            // 
+            // embraceDateLabel
+            // 
+            this.embraceDateLabel.AutoSize = true;
+            this.embraceDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.embraceDateLabel.Location = new System.Drawing.Point(8, 233);
+            this.embraceDateLabel.Name = "embraceDateLabel";
+            this.embraceDateLabel.Size = new System.Drawing.Size(124, 20);
+            this.embraceDateLabel.TabIndex = 21;
+            this.embraceDateLabel.Text = "Embrace Date";
+            // 
+            // moralityLevelDropDown
+            // 
+            this.moralityLevelDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moralityLevelDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLevelDropDown.FormattingEnabled = true;
+            this.moralityLevelDropDown.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.moralityLevelDropDown.Location = new System.Drawing.Point(469, 182);
+            this.moralityLevelDropDown.Name = "moralityLevelDropDown";
+            this.moralityLevelDropDown.Size = new System.Drawing.Size(50, 28);
+            this.moralityLevelDropDown.TabIndex = 20;
+            // 
+            // moralityLevelLabel
+            // 
+            this.moralityLevelLabel.AutoSize = true;
+            this.moralityLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLevelLabel.Location = new System.Drawing.Point(412, 187);
+            this.moralityLevelLabel.Name = "moralityLevelLabel";
+            this.moralityLevelLabel.Size = new System.Drawing.Size(51, 20);
+            this.moralityLevelLabel.TabIndex = 19;
+            this.moralityLevelLabel.Text = "Level";
+            // 
+            // moralityDropDown
+            // 
+            this.moralityDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moralityDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityDropDown.FormattingEnabled = true;
+            this.moralityDropDown.Location = new System.Drawing.Point(153, 184);
+            this.moralityDropDown.Name = "moralityDropDown";
+            this.moralityDropDown.Size = new System.Drawing.Size(235, 28);
+            this.moralityDropDown.TabIndex = 18;
+            // 
+            // moralityLabel
+            // 
+            this.moralityLabel.AutoSize = true;
+            this.moralityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moralityLabel.Location = new System.Drawing.Point(8, 187);
+            this.moralityLabel.Name = "moralityLabel";
+            this.moralityLabel.Size = new System.Drawing.Size(134, 20);
+            this.moralityLabel.TabIndex = 17;
+            this.moralityLabel.Text = "Path of Morality";
+            // 
             // genderTextBox
             // 
             this.genderTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -556,6 +628,7 @@
             this.clanDropBox.Name = "clanDropBox";
             this.clanDropBox.Size = new System.Drawing.Size(200, 28);
             this.clanDropBox.TabIndex = 5;
+            this.clanDropBox.SelectedIndexChanged += new System.EventHandler(this.clanDropBox_SelectedIndexChanged);
             // 
             // clanLabel
             // 
@@ -574,6 +647,7 @@
             this.characterNameTextBox.Name = "characterNameTextBox";
             this.characterNameTextBox.Size = new System.Drawing.Size(144, 26);
             this.characterNameTextBox.TabIndex = 3;
+            this.characterNameTextBox.TextChanged += new System.EventHandler(this.characterNameTextBox_TextChanged);
             // 
             // characterNameLabel
             // 
@@ -587,6 +661,7 @@
             // 
             // statsTab
             // 
+            this.statsTab.Controls.Add(this.attributeGroupBox);
             this.statsTab.Location = new System.Drawing.Point(4, 22);
             this.statsTab.Name = "statsTab";
             this.statsTab.Size = new System.Drawing.Size(996, 756);
@@ -594,71 +669,67 @@
             this.statsTab.Text = "Attributes/Abilities/Backgrounds";
             this.statsTab.UseVisualStyleBackColor = true;
             // 
-            // moralityLabel
+            // attributeGroupBox
             // 
-            this.moralityLabel.AutoSize = true;
-            this.moralityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moralityLabel.Location = new System.Drawing.Point(8, 187);
-            this.moralityLabel.Name = "moralityLabel";
-            this.moralityLabel.Size = new System.Drawing.Size(134, 20);
-            this.moralityLabel.TabIndex = 17;
-            this.moralityLabel.Text = "Path of Morality";
+            this.attributeGroupBox.Controls.Add(this.attributePhysicalFocus3ComboBox);
+            this.attributeGroupBox.Controls.Add(this.attributePhysicalFocus2ComboBox);
+            this.attributeGroupBox.Controls.Add(this.attributePhysicalFocus1ComboBox);
+            this.attributeGroupBox.Controls.Add(this.textBox1);
+            this.attributeGroupBox.Controls.Add(this.attributePhysicalLabel);
+            this.attributeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attributeGroupBox.Location = new System.Drawing.Point(8, 3);
+            this.attributeGroupBox.Name = "attributeGroupBox";
+            this.attributeGroupBox.Size = new System.Drawing.Size(980, 218);
+            this.attributeGroupBox.TabIndex = 0;
+            this.attributeGroupBox.TabStop = false;
+            this.attributeGroupBox.Text = "Attributes";
             // 
-            // moralityDropDown
+            // attributePhysicalFocus3ComboBox
             // 
-            this.moralityDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.moralityDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moralityDropDown.FormattingEnabled = true;
-            this.moralityDropDown.Location = new System.Drawing.Point(153, 184);
-            this.moralityDropDown.Name = "moralityDropDown";
-            this.moralityDropDown.Size = new System.Drawing.Size(235, 28);
-            this.moralityDropDown.TabIndex = 18;
+            this.attributePhysicalFocus3ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attributePhysicalFocus3ComboBox.FormattingEnabled = true;
+            this.attributePhysicalFocus3ComboBox.Location = new System.Drawing.Point(10, 168);
+            this.attributePhysicalFocus3ComboBox.Name = "attributePhysicalFocus3ComboBox";
+            this.attributePhysicalFocus3ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.attributePhysicalFocus3ComboBox.TabIndex = 8;
+            this.attributePhysicalFocus3ComboBox.Visible = false;
             // 
-            // moralityLevelLabel
+            // attributePhysicalFocus2ComboBox
             // 
-            this.moralityLevelLabel.AutoSize = true;
-            this.moralityLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moralityLevelLabel.Location = new System.Drawing.Point(412, 187);
-            this.moralityLevelLabel.Name = "moralityLevelLabel";
-            this.moralityLevelLabel.Size = new System.Drawing.Size(51, 20);
-            this.moralityLevelLabel.TabIndex = 19;
-            this.moralityLevelLabel.Text = "Level";
+            this.attributePhysicalFocus2ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attributePhysicalFocus2ComboBox.FormattingEnabled = true;
+            this.attributePhysicalFocus2ComboBox.Location = new System.Drawing.Point(10, 134);
+            this.attributePhysicalFocus2ComboBox.Name = "attributePhysicalFocus2ComboBox";
+            this.attributePhysicalFocus2ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.attributePhysicalFocus2ComboBox.TabIndex = 7;
+            this.attributePhysicalFocus2ComboBox.Visible = false;
             // 
-            // moralityLevelDropDown
+            // attributePhysicalFocus1ComboBox
             // 
-            this.moralityLevelDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.moralityLevelDropDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moralityLevelDropDown.FormattingEnabled = true;
-            this.moralityLevelDropDown.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.moralityLevelDropDown.Location = new System.Drawing.Point(469, 182);
-            this.moralityLevelDropDown.Name = "moralityLevelDropDown";
-            this.moralityLevelDropDown.Size = new System.Drawing.Size(50, 28);
-            this.moralityLevelDropDown.TabIndex = 20;
+            this.attributePhysicalFocus1ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attributePhysicalFocus1ComboBox.FormattingEnabled = true;
+            this.attributePhysicalFocus1ComboBox.Location = new System.Drawing.Point(10, 100);
+            this.attributePhysicalFocus1ComboBox.Name = "attributePhysicalFocus1ComboBox";
+            this.attributePhysicalFocus1ComboBox.Size = new System.Drawing.Size(121, 28);
+            this.attributePhysicalFocus1ComboBox.TabIndex = 6;
             // 
-            // embraceDateTimePicker
+            // textBox1
             // 
-            this.embraceDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.embraceDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.embraceDateTimePicker.Location = new System.Drawing.Point(153, 228);
-            this.embraceDateTimePicker.Name = "embraceDateTimePicker";
-            this.embraceDateTimePicker.Size = new System.Drawing.Size(144, 26);
-            this.embraceDateTimePicker.TabIndex = 22;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(86, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(28, 26);
+            this.textBox1.TabIndex = 5;
             // 
-            // embraceDateLabel
+            // attributePhysicalLabel
             // 
-            this.embraceDateLabel.AutoSize = true;
-            this.embraceDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.embraceDateLabel.Location = new System.Drawing.Point(8, 233);
-            this.embraceDateLabel.Name = "embraceDateLabel";
-            this.embraceDateLabel.Size = new System.Drawing.Size(124, 20);
-            this.embraceDateLabel.TabIndex = 21;
-            this.embraceDateLabel.Text = "Embrace Date";
+            this.attributePhysicalLabel.AutoSize = true;
+            this.attributePhysicalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attributePhysicalLabel.Location = new System.Drawing.Point(6, 71);
+            this.attributePhysicalLabel.Name = "attributePhysicalLabel";
+            this.attributePhysicalLabel.Size = new System.Drawing.Size(74, 20);
+            this.attributePhysicalLabel.TabIndex = 4;
+            this.attributePhysicalLabel.Text = "Physical";
             // 
             // SheetEditorForm
             // 
@@ -677,6 +748,9 @@
             this.characterInfoTab.ResumeLayout(false);
             this.charInfoGroupBox.ResumeLayout(false);
             this.charInfoGroupBox.PerformLayout();
+            this.statsTab.ResumeLayout(false);
+            this.attributeGroupBox.ResumeLayout(false);
+            this.attributeGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -733,7 +807,13 @@
         private System.Windows.Forms.Label moralityLabel;
         private System.Windows.Forms.ComboBox moralityLevelDropDown;
         private System.Windows.Forms.Label moralityLevelLabel;
-        private System.Windows.Forms.DateTimePicker embraceDateTimePicker;
         private System.Windows.Forms.Label embraceDateLabel;
+        private System.Windows.Forms.GroupBox attributeGroupBox;
+        private System.Windows.Forms.TextBox embraceDateTimePicker;
+        private System.Windows.Forms.ComboBox attributePhysicalFocus3ComboBox;
+        private System.Windows.Forms.ComboBox attributePhysicalFocus2ComboBox;
+        private System.Windows.Forms.ComboBox attributePhysicalFocus1ComboBox;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label attributePhysicalLabel;
     }
 }

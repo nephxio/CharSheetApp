@@ -21,7 +21,9 @@ namespace CharSheetApp
         public CharSheetData()
         {
             headers = new HeaderData();
-            attributes = new List<AttributeData>() { new AttributeData(1, "Physical", 0, "", 0), new AttributeData(2, "Social", 0, "", 0), new AttributeData(3, "Mental", 0, "", 0) };
+            attributes = new List<AttributeData>() { new AttributeData(new IDName(1, "Physical"), new IDName(0, ""), 0), 
+                                                     new AttributeData(new IDName(2, "Social"), new IDName(0, ""), 0), 
+                                                     new AttributeData(new IDName(3, "Mental"), new IDName(0, ""), 0) };
             abilities = new List<AbilityData>();
             backgrounds = new List<AbilityData>();
             disciplines = new List<DisciplineData>();
@@ -53,42 +55,57 @@ namespace CharSheetApp
         public string charName;
         public string charClan;
         public string charSect;
-        public string charGender;
+        public string charPronouns;
         public string charArchetype;
         public string nativeLanguage;
         public Morality moralityPathInfo;
-        public System.DateTime embraceDate;
+        public string embraceDate;
 
         public HeaderData()
         {
-            moralityPathInfo = new Morality();
+            this.playerName = "";
+            this.playerEmail = "";
+            this.membershipID = "";
+            this.creationMC = 0;
+            this.currentMC = 0;
+            this.directST = "";
+            this.directSTEmail = "";
+            this.directCoord = "";
+            this.directCoordEmail = "";
+            this.domainID = "";
+            this.regionID = "";
+            this.countryID = "";
+            this.isNPC = false;
+            this.creationDate = new System.DateTime();
+            this.charName = "";
+            this.charClan = "";
+            this.charSect = "";
+            this.charPronouns = "";
+            this.charArchetype = "";
+            this.nativeLanguage = "";
+            this.moralityPathInfo = new Morality();
+            this.embraceDate = "";
         }
     }
 
     [Serializable]
     public class AttributeData 
     {
-        public int attributeID;
-        public string attributeName;
-        public int focusID;
-        public string focusName;
+        public IDName attributeInfo;
+        public IDName focusInfo;
         public int level;
 
         public AttributeData()
         {
-            attributeID = 0;
-            attributeName = "";
-            focusID = 0;
-            focusName = "";
+            attributeInfo = new IDName();
+            focusInfo = new IDName();
             level = 0;
         }
 
-        public AttributeData(int AtID, string AtName, int FocID, string FocName, int Level)
+        public AttributeData(IDName AttributeInfo, IDName FocusInfo, int Level)
         {
-            attributeID = AtID;
-            attributeName = AtName;
-            focusID = FocID;
-            focusName = FocName;
+            attributeInfo = AttributeInfo;
+            focusInfo = FocusInfo;
             level = Level;
         }
     }
