@@ -36,9 +36,7 @@ namespace CharSheetApp
             this.Text = "Application For: " + data.headers.charName;
             this.charNameData.Text = data.headers.charName;
 
-            applicationStringDisplayLabel.Text = GenerateAppString(4,"USA","SE","VS");
-
-
+            applicationStringDisplayLabel.Text = GenerateAppString(4,"USA","SE","VS");            
         }
 
         private void FillApprovalItemsDropDown(List<ApprovalItems> appItems)

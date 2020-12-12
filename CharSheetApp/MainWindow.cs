@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace CharSheetApp
 {
@@ -108,6 +109,35 @@ namespace CharSheetApp
         private void newToolStripMenuItem_DropDownClosed(object sender, EventArgs e)
         {
             applicationForToolStripMenuItem.DropDownItems.Clear();
+        }
+        private void attributesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> tableData = new List<string>();
+
+            tableData = StaticGameData.FixTable("static_data_foci");
+
+            tableData.Remove("None");
+            tableData.Insert(0, "None");
+
+            StaticGameData.WriteFixToTable("static_data_foci", "focus_id", "focus_name", tableData, tableData.Count);
+        }
+
+        private void disciplinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<int> tableData = StaticGameData.FixTableInt("static_data_disciplines", 9);
+            for(int x = 0; x < tableData.Count; x++)
+            {
+                if(tableData[x] == 10)
+                {
+                    tableData[x] = 1;
+                }
+                else
+                {
+                    tableData[x]++;
+                }
+            }
+
+            StaticGameData.WriteFixToTableInt("static_data_disciplines", "discipline_id", "level_five_focus_id", tableData, tableData.Count);
         }
     }
 }

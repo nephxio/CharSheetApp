@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sheetTabControl = new System.Windows.Forms.TabControl();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.charSheetTabControl = new System.Windows.Forms.TabControl();
             this.playerInfoTab = new System.Windows.Forms.TabPage();
             this.groupPanel = new System.Windows.Forms.Panel();
             this.playerInfoGroupBox = new System.Windows.Forms.GroupBox();
@@ -86,7 +89,15 @@
             this.attributePhysicalFocus1ComboBox = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.attributePhysicalLabel = new System.Windows.Forms.Label();
-            this.sheetTabControl.SuspendLayout();
+            this.xpLogTab = new System.Windows.Forms.TabPage();
+            this.xpLogDataGrid = new System.Windows.Forms.DataGridView();
+            this.entryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpEarned = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpSpent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xpRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entryCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entryNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.charSheetTabControl.SuspendLayout();
             this.playerInfoTab.SuspendLayout();
             this.groupPanel.SuspendLayout();
             this.playerInfoGroupBox.SuspendLayout();
@@ -94,19 +105,22 @@
             this.charInfoGroupBox.SuspendLayout();
             this.statsTab.SuspendLayout();
             this.attributeGroupBox.SuspendLayout();
+            this.xpLogTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xpLogDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // sheetTabControl
+            // charSheetTabControl
             // 
-            this.sheetTabControl.Controls.Add(this.playerInfoTab);
-            this.sheetTabControl.Controls.Add(this.characterInfoTab);
-            this.sheetTabControl.Controls.Add(this.statsTab);
-            this.sheetTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sheetTabControl.Location = new System.Drawing.Point(0, 0);
-            this.sheetTabControl.Name = "sheetTabControl";
-            this.sheetTabControl.SelectedIndex = 0;
-            this.sheetTabControl.Size = new System.Drawing.Size(1004, 782);
-            this.sheetTabControl.TabIndex = 0;
+            this.charSheetTabControl.Controls.Add(this.playerInfoTab);
+            this.charSheetTabControl.Controls.Add(this.characterInfoTab);
+            this.charSheetTabControl.Controls.Add(this.statsTab);
+            this.charSheetTabControl.Controls.Add(this.xpLogTab);
+            this.charSheetTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.charSheetTabControl.Location = new System.Drawing.Point(0, 0);
+            this.charSheetTabControl.Name = "charSheetTabControl";
+            this.charSheetTabControl.SelectedIndex = 0;
+            this.charSheetTabControl.Size = new System.Drawing.Size(1004, 782);
+            this.charSheetTabControl.TabIndex = 0;
             // 
             // playerInfoTab
             // 
@@ -731,16 +745,98 @@
             this.attributePhysicalLabel.TabIndex = 4;
             this.attributePhysicalLabel.Text = "Physical";
             // 
+            // xpLogTab
+            // 
+            this.xpLogTab.Controls.Add(this.xpLogDataGrid);
+            this.xpLogTab.Location = new System.Drawing.Point(4, 22);
+            this.xpLogTab.Name = "xpLogTab";
+            this.xpLogTab.Padding = new System.Windows.Forms.Padding(3);
+            this.xpLogTab.Size = new System.Drawing.Size(996, 756);
+            this.xpLogTab.TabIndex = 3;
+            this.xpLogTab.Text = "XP Log";
+            this.xpLogTab.UseVisualStyleBackColor = true;
+            // 
+            // xpLogDataGrid
+            // 
+            this.xpLogDataGrid.AllowUserToDeleteRows = false;
+            this.xpLogDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.xpLogDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.xpLogDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xpLogDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.entryDate,
+            this.xpEarned,
+            this.xpSpent,
+            this.xpRemaining,
+            this.entryCategory,
+            this.entryNotes});
+            this.xpLogDataGrid.Location = new System.Drawing.Point(6, 198);
+            this.xpLogDataGrid.Name = "xpLogDataGrid";
+            this.xpLogDataGrid.Size = new System.Drawing.Size(982, 445);
+            this.xpLogDataGrid.TabIndex = 0;
+            // 
+            // entryDate
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.entryDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.entryDate.HeaderText = "Date";
+            this.entryDate.Name = "entryDate";
+            this.entryDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // xpEarned
+            // 
+            this.xpEarned.HeaderText = "XP Earned";
+            this.xpEarned.Name = "xpEarned";
+            this.xpEarned.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // xpSpent
+            // 
+            this.xpSpent.HeaderText = "XP Spent";
+            this.xpSpent.Name = "xpSpent";
+            this.xpSpent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // xpRemaining
+            // 
+            this.xpRemaining.HeaderText = "XP Remaining";
+            this.xpRemaining.Name = "xpRemaining";
+            this.xpRemaining.ReadOnly = true;
+            this.xpRemaining.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // entryCategory
+            // 
+            this.entryCategory.HeaderText = "Category";
+            this.entryCategory.Name = "entryCategory";
+            this.entryCategory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // entryNotes
+            // 
+            this.entryNotes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.entryNotes.DefaultCellStyle = dataGridViewCellStyle3;
+            this.entryNotes.HeaderText = "Item/Notes";
+            this.entryNotes.MinimumWidth = 450;
+            this.entryNotes.Name = "entryNotes";
+            this.entryNotes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.entryNotes.Width = 450;
+            // 
             // SheetEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 782);
-            this.Controls.Add(this.sheetTabControl);
+            this.Controls.Add(this.charSheetTabControl);
             this.MaximumSize = new System.Drawing.Size(1020, 10000);
             this.Name = "SheetEditorForm";
             this.Text = "Form1";
-            this.sheetTabControl.ResumeLayout(false);
+            this.charSheetTabControl.ResumeLayout(false);
             this.playerInfoTab.ResumeLayout(false);
             this.groupPanel.ResumeLayout(false);
             this.playerInfoGroupBox.ResumeLayout(false);
@@ -751,13 +847,15 @@
             this.statsTab.ResumeLayout(false);
             this.attributeGroupBox.ResumeLayout(false);
             this.attributeGroupBox.PerformLayout();
+            this.xpLogTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xpLogDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl sheetTabControl;
+        private System.Windows.Forms.TabControl charSheetTabControl;
         private System.Windows.Forms.TabPage playerInfoTab;
         private System.Windows.Forms.TabPage characterInfoTab;
         private System.Windows.Forms.TabPage statsTab;
@@ -815,5 +913,13 @@
         private System.Windows.Forms.ComboBox attributePhysicalFocus1ComboBox;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label attributePhysicalLabel;
+        private System.Windows.Forms.TabPage xpLogTab;
+        private System.Windows.Forms.DataGridView xpLogDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpEarned;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpSpent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xpRemaining;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entryCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entryNotes;
     }
 }

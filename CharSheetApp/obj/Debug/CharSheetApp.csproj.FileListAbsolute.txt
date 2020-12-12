@@ -139,3 +139,6 @@ D:\Programming Projects\CharSheetApp\CharSheetApp\bin\Debug\System.Memory.xml
 D:\Programming Projects\CharSheetApp\CharSheetApp\bin\Debug\System.Numerics.Vectors.xml
 D:\Programming Projects\CharSheetApp\CharSheetApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.ApplicationForm.resources
+D:\Programming Projects\CharSheetApp\CharSheetApp\obj\Debug\CharSheetApp.csproj.CoreCompileInputs.cache
+D:\Programming Projects\CharSheetApp\CharSheetApp\bin\Debug\YamlDotNet.dll
+D:\Programming Projects\CharSheetApp\CharSheetApp\bin\Debug\YamlDotNet.xml

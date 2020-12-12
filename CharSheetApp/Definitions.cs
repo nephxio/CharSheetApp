@@ -7,7 +7,7 @@ namespace CharSheetApp
     [Serializable]
     public class Discipline
     {
-        public DiscID discInfo;
+        public IDName discInfo;
         public int rarityLevel;
         public string primaryAttribute;
         public string primaryAbility;
@@ -15,14 +15,14 @@ namespace CharSheetApp
 
         public Discipline()
         {
-            discInfo = new DiscID(40, "None");
+            discInfo = new IDName(40, "None");
             rarityLevel = 0;
             primaryAttribute = "";
             primaryAbility = "";
             abilityFoci = new List<string>();
         }
 
-        public Discipline(DiscID DiscInfo, int Rarity, string Attribute, string Ability, List<string> AbilityFoci)
+        public Discipline(IDName DiscInfo, int Rarity, string Attribute, string Ability, List<string> AbilityFoci)
         {
             discInfo = DiscInfo;
             rarityLevel = Rarity;
@@ -32,39 +32,20 @@ namespace CharSheetApp
         }
     }
 
-    [Serializable]
-    public class DiscID
-    {
-        public int disciplineID;
-        public string disciplineName;
-
-        public DiscID()
-        {
-            disciplineID = 0;
-            disciplineName = "";
-        }
-
-        public DiscID(int ID, string Name)
-        {
-            disciplineID = ID;
-            disciplineName = Name;
-        }
-    }
-
     public class Clan
     {
         public IDName clanInfo;
-        public List<DiscID> inClanDisciplines;
+        public List<IDName> inClanDisciplines;
         public IDName weaknessInfo;
 
         public Clan()
         {
             clanInfo = new IDName();
-            inClanDisciplines = new List<DiscID>();
+            inClanDisciplines = new List<IDName>();
             weaknessInfo = new IDName();
         }
 
-        public Clan(IDName ClanInfo, List<DiscID> InClanDisciplines, IDName WeaknessInfo)
+        public Clan(IDName ClanInfo, List<IDName> InClanDisciplines, IDName WeaknessInfo)
         {
             clanInfo = ClanInfo;
             inClanDisciplines = InClanDisciplines;
@@ -82,8 +63,7 @@ namespace CharSheetApp
         public int additionalPath;
         public IDName weaknessOneInfo;
         public IDName weaknessTwoInfo;
-
-
+        
         public Bloodline()
         {
             IDName bloodlineInfo = new IDName();

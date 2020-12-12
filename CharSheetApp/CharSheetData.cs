@@ -9,7 +9,6 @@ namespace CharSheetApp
     [Serializable]
     public class CharSheetData
     {
-
         public HeaderData headers;
         public List<AttributeData> attributes;
         public List<AbilityData> abilities;
@@ -118,7 +117,6 @@ namespace CharSheetApp
 
         public AbilityData() : base()
         {
-            
             level = 0;
             specialization = new List<string>();
         }
