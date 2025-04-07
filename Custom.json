@@ -411,7 +411,7 @@
             "chanceToProduce": 1.0,
             "produces": [
                 {
-                    "intervalSeconds": 300.0,
+                    "intervalSeconds": 60.0,
                     "itemSelectMode": 0,
                     "items": [
                         {
@@ -435,7 +435,7 @@
             "chanceToProduce": 1.0,
             "produces": [
                 {
-                    "intervalSeconds": 300.0,
+                    "intervalSeconds": 60.0,
                     "itemSelectMode": 0,
                     "items": [
                         {
