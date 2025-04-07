@@ -408,10 +408,10 @@
         },
 		{
             "dinoType": "/Game/PrimalEarth/Dinos/Sheep/Sheep_Character_BP.Sheep_Character_BP",
-            "chanceToProduce": 10.0,
+            "chanceToProduce": 1.0,
             "produces": [
                 {
-                    "intervalSeconds": 360.0,
+                    "intervalSeconds": 60,
                     "itemSelectMode": 0,
                     "items": [
                         {
@@ -432,10 +432,10 @@
         },
 		{
             "dinoType": "/Game/PrimalEarth/Dinos/Sheep/Sheep_Character_BP_Aberrant.Sheep_Character_BP_Aberrant",
-            "chanceToProduce": 10.0,
+            "chanceToProduce": 1.0,
             "produces": [
                 {
-                    "intervalSeconds": 360.0,
+                    "intervalSeconds": 60.0,
                     "itemSelectMode": 0,
                     "items": [
                         {
