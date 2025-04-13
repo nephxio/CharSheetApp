@@ -86,7 +86,7 @@
                     ]
                 },
                 {
-                    "intervalSeconds": 1800.0,
+                    "intervalSeconds": 600.0,
                     "itemSelectMode": 0,
                     "items": [
                         {
@@ -128,7 +128,7 @@
                     ]
                 },
                 {
-                    "intervalSeconds": 1800.0,
+                    "intervalSeconds": 600.0,
                     "itemSelectMode": 0,
                     "items": [
                         {
