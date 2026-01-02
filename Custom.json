@@ -484,6 +484,30 @@
                     ]
                 }
             ]
-        }
+        },
+		{
+			"dinoType": "/Game/PrimalEarth/Dinos/Kairuku/Kairuku_Character_BP.Kairuku_Character_BP",
+			"chanceToProduce": 1.0,
+			"produces": [
+				{
+					"intervalSeconds": 60.0,
+					"itemSelectMode": 0,
+					"items": [
+						{
+							"bpPath": "/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_Polymer_Organic.PrimalItemResource_Polymer_Organic",
+							"maxQuantityPerCycle": 0,
+							"maxQuantityInTerminal": 0,
+							"quantityPerDino": 1,
+							"alternateSelectMode": 0,
+							"alternateItemsChance": 0.0,
+							"alternateItems": [],
+							"comsumesSelectMode": 0,
+							"consumesItemsChance": 0,
+							"consumesItems": []
+						}
+					]
+				}
+			]
+		}
     ]
 }
